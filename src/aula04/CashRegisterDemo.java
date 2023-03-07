@@ -26,6 +26,7 @@ class Product {
     public int getQuantity() {
         return quantity;
     }
+
 }
 
 class CashRegister {
@@ -44,11 +45,18 @@ class CashRegister {
     }
 
     public String toString() {
-        String imprimir = "";
+        String imprimir = String.format("%10s %10s %10s %10s \n", "Product", "Price", "Quantity", "Total");
+        float totalValue = 0;
+
         for (int i = 0; i < carrinho.length; i++) {
-            imprimir += "Nome: " + carrinho[i].getName() + " Preço: " + carrinho[i].getPrice() + " Quantidade: "
-                    + carrinho[i].getQuantity() + " valor total: " + valorTotal;
+            imprimir += String.format("%10s %10.2f %10d %10.2f\n",
+                    carrinho[i].getName(),
+                    carrinho[i].getPrice(),
+                    carrinho[i].getQuantity(),
+                    carrinho[i].getPrice() * carrinho[i].getQuantity());
+            totalValue += carrinho[i].getPrice() * carrinho[i].getQuantity();
         }
+        imprimir += String.format("%9s %7.2f", "Total value: ", totalValue);
         return imprimir;
     }
 
@@ -58,7 +66,6 @@ public class CashRegisterDemo {
 
     public static void main(String[] args) {
 
-        // Cria e adiciona 5 produtos
         CashRegister cr = new CashRegister();
         cr.addProduct(new Product("Book", 9.99, 3));
         cr.addProduct(new Product("Pen", 1.99, 10));
@@ -66,7 +73,6 @@ public class CashRegisterDemo {
         cr.addProduct(new Product("Notebook", 19.99, 5));
         cr.addProduct(new Product("Phone case", 5.99, 1));
 
-        // TODO: Listar o conteúdo e valor total
         System.out.println(cr);
 
     }
