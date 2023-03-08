@@ -76,8 +76,10 @@ public class Figuras {
 
             System.out.println(circulos[i]);
             System.out.println(circulos[i].equals(circulos[nextFigura]));
+
             System.out.println(triangulos[i]);
             System.out.println(triangulos[i].equals(triangulos[nextFigura]));
+
             System.out.println(retangulos[i]);
             System.out.println(retangulos[i].equals(retangulos[nextFigura]));
 
