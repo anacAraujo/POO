@@ -60,6 +60,9 @@ class Triangulo {
     }
 
     public void setLado1(int valorLado1) {
+        do {
+
+        } while (valorLado1 <= 0);
         this.lado1 = valorLado1;
     }
 
