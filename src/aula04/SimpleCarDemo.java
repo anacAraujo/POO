@@ -2,25 +2,6 @@ package aula04;
 
 import java.util.Scanner;
 
-class Car {
-    public String make;
-    public String model;
-    public int year;
-    public int kms;
-
-    public Car(String make, String model, int year, int kms) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.kms = kms;
-    }
-
-    public void drive(int distance) {
-        // Acumular distancia percorrida
-        this.kms += distance;
-    }
-}
-
 public class SimpleCarDemo {
 
     static Scanner sc = new Scanner(System.in);
@@ -29,14 +10,10 @@ public class SimpleCarDemo {
         // Lista todos os carros registados
         String listCars = "";
 
-        System.out.println("Carros registados:");
+        System.out.println("\nCarros registados:");
 
         for (int i = 0; i < cars.length; i++) {
-            listCars += String.format("%2s %2s, %2d, km: %2d\n",
-                    cars[i].make,
-                    cars[i].model,
-                    cars[i].year,
-                    cars[i].kms);
+            listCars += cars[i].toString();
         }
 
         System.out.println(listCars);
