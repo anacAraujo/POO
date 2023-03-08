@@ -57,9 +57,8 @@ public class SimpleCarDemo {
             int kms = (int) Math.round(Math.random() * 1000); // viagem até 1000 kms
             System.out.printf("Carro %d viajou %d quilómetros.\n", j, kms);
 
-            // TODO: Adicionar viagem ao carro j
+            // Adicionar viagem ao carro j
             cars[j].drive(kms);
-            System.out.println(cars[j].kms);
         }
 
         listCars(cars);
