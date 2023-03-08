@@ -3,11 +3,11 @@ package aula04;
 class Circulo {
     private int raio;
 
-    Circulo(int r) {
-        do {
+    public Circulo(int r) {
+        if (raio <= 0) {
             System.out.println("Raio tem de ser maior que 0.");
-            break;
-        } while (raio <= 0);
+            return;
+        }
         this.raio = r;
     }
 
@@ -16,10 +16,10 @@ class Circulo {
     }
 
     public void setRaio(int raio) {
-        do {
+        if (raio <= 0) {
             System.out.println("Raio tem de ser maior que 0.");
-            break;
-        } while (raio <= 0);
+            return;
+        }
         this.raio = raio;
     }
 

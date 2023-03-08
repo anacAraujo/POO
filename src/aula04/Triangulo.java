@@ -1,62 +1,58 @@
 package aula04;
 
 class Triangulo {
-    int lado1;
-    int lado2;
-    int lado3;
+    private int lado1;
+    private int lado2;
+    private int lado3;
 
-    Triangulo(int l1, int l2, int l3) {
-        do {
-            System.out.println("Valores inválidos.");
-            break;
-        } while (l1 + l2 < l3 || l2 + l3 < l1 || l3 + l1 < l2 || l1 <= 0 || l2 <= 0 || l3 <= 0);
+    public Triangulo(int l1, int l2, int l3) {
+        if (l1 + l2 < l3 || l2 + l3 < l1 || l3 + l1 < l2 || l1 <= 0 || l2 <= 0 || l3 <= 0) {
+            return;
+        }
         this.lado1 = l1;
         this.lado2 = l2;
         this.lado3 = l3;
     }
 
     public int getLado1() {
-        do {
-            System.out.println("Insira um valor maior que zero.");
-            break;
-        } while (lado1 <= 0);
         return lado1;
     }
 
     public int getLado2() {
-        do {
-            System.out.println("Insira um valor maior que zero.");
-            break;
-        } while (lado2 <= 0);
         return lado2;
     }
 
     public int getLado3() {
-        do {
-            System.out.println("Insira um valor maior que zero.");
-            break;
-        } while (lado3 <= 0);
         return lado3;
     }
 
     public void setLado1(int valorLado1) {
-        do {
-
-        } while (valorLado1 <= 0);
+        if (valorLado1 + this.lado2 < this.lado3 ||
+                this.lado2 + this.lado3 < valorLado1 ||
+                this.lado3 + valorLado1 < this.lado2 ||
+                valorLado1 <= 0) {
+            return;
+        }
         this.lado1 = valorLado1;
     }
 
     public void setLado2(int valorLado2) {
-        do {
-
-        } while (valorLado2 <= 0);
+        if (this.lado1 + valorLado2 < this.lado3 ||
+                valorLado2 + this.lado3 < this.lado1 ||
+                this.lado3 + this.lado1 < valorLado2 ||
+                valorLado2 <= 0) {
+            return;
+        }
         this.lado2 = valorLado2;
     }
 
     public void setLado3(int valorLado3) {
-        do {
-
-        } while (valorLado3 <= 0);
+        if (this.lado1 + this.lado2 < valorLado3 ||
+                this.lado2 + valorLado3 < this.lado1 ||
+                valorLado3 + this.lado1 < this.lado2 ||
+                valorLado3 <= 0) {
+            return;
+        }
         this.lado3 = valorLado3;
     }
 

@@ -1,14 +1,14 @@
 package aula04;
 
 class Retangulo {
-    int comprimento;
-    int largura;
+    private int comprimento;
+    private int largura;
 
-    Retangulo(int c, int l) {
-        do {
+    public Retangulo(int c, int l) {
+        if (c <= 0 || l <= 0) {
             System.out.println("Insira um valor maior que zero.");
-            break;
-        } while (c <= 0 || l <= 0);
+            return;
+        }
         this.comprimento = c;
         this.largura = l;
     }
@@ -22,18 +22,18 @@ class Retangulo {
     }
 
     public void setComprimento(int comprimento) {
-        do {
+        if (comprimento <= 0) {
             System.out.println("Insira um valor maior que zero.");
-            break;
-        } while (comprimento <= 0);
+            return;
+        }
         this.comprimento = comprimento;
     }
 
     public void setLargura(int largura) {
-        do {
+        if (largura <= 0) {
             System.out.println("Insira um valor maior que zero.");
-            break;
-        } while (largura <= 0);
+            return;
+        }
         this.largura = largura;
     }
 
@@ -53,6 +53,6 @@ class Retangulo {
     }
 
     public int perimetro() {
-        return (this.comprimento + this.largura);
+        return 2 * (this.comprimento + this.largura);
     }
 }
