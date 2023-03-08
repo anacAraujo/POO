@@ -67,10 +67,16 @@ class Triangulo {
     }
 
     public void setLado2(int valorLado2) {
+        do {
+
+        } while (valorLado2 <= 0);
         this.lado2 = valorLado2;
     }
 
     public void setLado3(int valorLado3) {
+        do {
+
+        } while (valorLado3 <= 0);
         this.lado3 = valorLado3;
     }
 
