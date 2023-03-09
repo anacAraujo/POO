@@ -65,26 +65,40 @@ public class Figuras {
                     numRetangulos++;
                     break;
                 case 4:
+                    for (int i = 0; i < numCirculos; i++) {
+                        int nextFigura = i + 1;
+                        if (nextFigura == numCirculos) {
+                            nextFigura = 0;
+                        }
+                        System.out.println(circulos[i]);
+                        if (nextFigura < numCirculos && nextFigura != i) {
+                            System.out.println(circulos[i] + " é igual ao " + circulos[nextFigura] + " ? "
+                                    + circulos[i].equals(circulos[nextFigura]));
+                        }
+                    }
+
                     for (int i = 0; i < numTriangulos; i++) {
                         int nextFigura = i + 1;
-
                         if (nextFigura == numTriangulos) {
                             nextFigura = 0;
                         }
-
-                        // System.out.println(circulos[i]);
-                        // System.out.println(circulos[i].equals(circulos[nextFigura]));
-
                         System.out.println(triangulos[i]);
-
-                        if (nextFigura < numTriangulos) {
+                        if (nextFigura < numTriangulos && nextFigura != i) {
                             System.out.println(triangulos[i] + " é igual ao " + triangulos[nextFigura] + " ? "
                                     + triangulos[i].equals(triangulos[nextFigura]));
                         }
+                    }
 
-                        // System.out.println(retangulos[i]);
-                        // System.out.println(retangulos[i].equals(retangulos[nextFigura]));
-
+                    for (int i = 0; i < numRetangulos; i++) {
+                        int nextFigura = i + 1;
+                        if (nextFigura == numRetangulos) {
+                            nextFigura = 0;
+                        }
+                        System.out.println(retangulos[i]);
+                        if (nextFigura < numRetangulos && nextFigura != i) {
+                            System.out.println(retangulos[i] + " é igual ao " + retangulos[nextFigura] + " ? "
+                                    + retangulos[i].equals(retangulos[nextFigura]));
+                        }
                     }
                     break;
                 default:
