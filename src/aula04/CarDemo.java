@@ -21,47 +21,41 @@ public class CarDemo {
             }
 
             String[] partesCarro = carroUser.split(" ");
-            if (partesCarro.length < 4) {
+
+            boolean isValid = validation(partesCarro);
+            if (!isValid) {
+                System.out.println("Dados mal formatados. Tente novamente.");
                 continue;
             }
 
-            // System.out.println(validation(partesCarro));
-            // if (validation(partesCarro) == false) {
-            // System.out.println("Dados mal formatados. Tente novamente.");
-            // continue;
-            // }
             String marca = partesCarro[0];
-            String modelo = partesCarro[1];
-            int ano = Integer.parseInt(partesCarro[2]);
-            int kms = Integer.parseInt(partesCarro[3]);
+            String modelo = "";
+            for (int i = 1; i < partesCarro.length - 2; i++) {
+                modelo += partesCarro[i] + " ";
+            }
+            int ano = Integer.parseInt(partesCarro[partesCarro.length - 2]);
+            int kms = Integer.parseInt(partesCarro[partesCarro.length - 1]);
 
             cars[numCarsUser] = new Car(marca, modelo, ano, kms);
 
             numCarsUser++;
-        } while (carroUser != "");
+        } while (carroUser != "" && numCarsUser < 10);
 
         return numCarsUser;
-
     }
 
-    // static boolean validation(String[] partesCarro) {
-    // boolean estado = false;
-    // if (partesCarro[0].matches("\\[a-zA-Z]")) {
-    // estado = true;
-    // System.out.println("1: " + estado);
-    // if (partesCarro[1].matches("\\W+||\\W+")) {
-    // System.out.println("2: " + estado);
-    // if (partesCarro[2].matches("\\d{4}")) {
-    // System.out.println("3: " + estado);
-    // if (partesCarro[3].matches("\\d[^.,]")) {
-    // estado = true;
-    // System.out.println("4: " + estado);
-    // }
-    // }
-    // }
-    // }
-    // return estado;
-    // }
+    static boolean validation(String[] partesCarro) {
+        if (partesCarro.length < 4) {
+            return false;
+        }
+        if (!partesCarro[partesCarro.length - 2].matches("\\d{4}")) {
+            return false;
+        }
+        if (!partesCarro[partesCarro.length - 1].matches("\\d+")) {
+            return false;
+        }
+        return true;
+    }
 
     static void registerTrips(Car[] cars, int numCars) {
         // pede dados das viagens ao utilizador e atualiza informação do carro
@@ -71,13 +65,25 @@ public class CarDemo {
         do {
             System.out.print("Registe uma viagem no formato \"carro:distância\": ");
             tripsUser = sc.nextLine();
+
+            if (tripsUser == "") {
+                break;
+            }
+
             String[] trips = tripsUser.split(":");
-            if (trips.length < 2) {
+
+            if (trips.length < 2 || !trips[0].matches("\\d") || !trips[1].matches("\\d+")) {
+                System.out.println("Dados mal formatados. Tente novamente.");
                 continue;
             }
+
             int carro = Integer.parseInt(trips[0]);
             int distanciaCrro = Integer.parseInt(trips[1]);
 
+            if (carro >= numCars) {
+                System.out.println("Carro inválido. Tente novamente.");
+                continue;
+            }
             cars[carro].drive(distanciaCrro);
 
         } while (tripsUser != "");
