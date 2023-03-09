@@ -7,6 +7,7 @@ class Triangulo {
 
     public Triangulo(int l1, int l2, int l3) {
         if (l1 + l2 < l3 || l2 + l3 < l1 || l3 + l1 < l2 || l1 <= 0 || l2 <= 0 || l3 <= 0) {
+            System.out.println("Lados do triangulo invalidos.");
             return;
         }
         this.lado1 = l1;
@@ -31,6 +32,7 @@ class Triangulo {
                 this.lado2 + this.lado3 < valorLado1 ||
                 this.lado3 + valorLado1 < this.lado2 ||
                 valorLado1 <= 0) {
+            System.out.println("Lados do triangulo invalidos.");
             return;
         }
         this.lado1 = valorLado1;
@@ -41,6 +43,7 @@ class Triangulo {
                 valorLado2 + this.lado3 < this.lado1 ||
                 this.lado3 + this.lado1 < valorLado2 ||
                 valorLado2 <= 0) {
+            System.out.println("Lados do triangulo invalidos.");
             return;
         }
         this.lado2 = valorLado2;
@@ -51,6 +54,7 @@ class Triangulo {
                 this.lado2 + valorLado3 < this.lado1 ||
                 valorLado3 + this.lado1 < this.lado2 ||
                 valorLado3 <= 0) {
+            System.out.println("Lados do triangulo invalidos.");
             return;
         }
         this.lado3 = valorLado3;
