@@ -1,6 +1,10 @@
 package aula05;
 
-public class DateYMD {
+class DateYMD {
+
+    private int day;
+    private int month;
+    private int year;
 
     public boolean validMonth(int month) {
         if (month >= 1 && month <= 12) {
@@ -34,5 +38,11 @@ public class DateYMD {
             return false;
         }
         return true;
+    }
+}
+
+public class Ex01 {
+    public static void main(String[] args) {
+
     }
 }
