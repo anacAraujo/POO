@@ -6,6 +6,14 @@ class DateYMD {
     private int month;
     private int year;
 
+    public void setDate(int day, int month, int year) {
+        if (valid(day, month, year)) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+    }
+
     public boolean validMonth(int month) {
         if (month >= 1 && month <= 12) {
             return true;
