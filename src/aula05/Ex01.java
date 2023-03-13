@@ -7,11 +7,29 @@ class DateYMD {
     private int year;
 
     public void setDate(int day, int month, int year) {
-        if (valid(day, month, year)) {
-            this.day = day;
-            this.month = month;
-            this.year = year;
+        if (!valid(day, month, year)) {
+            System.out.println("Invalid date.");
+            return;
         }
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    public int getDay() {
+        return this.day;
+    }
+
+    public int getMonth() {
+        return this.month;
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    public String toString() {
+        return this.year + "-" + this.month + "-" + this.day;
     }
 
     public boolean validMonth(int month) {
@@ -47,6 +65,7 @@ class DateYMD {
         }
         return true;
     }
+
 }
 
 public class Ex01 {
