@@ -21,4 +21,10 @@ public class DateYMD {
         return totalMonthDays;
     }
 
+    public boolean leapYear(int year) {
+        if (year == 366) {
+            return true;
+        }
+        return false;
+    }
 }
