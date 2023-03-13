@@ -14,7 +14,7 @@ public class DateYMD {
         if (month == 4 || month == 6 || month == 9 || month == 11) {
             totalMonthDays = 30;
         } else if (month == 2) {
-            totalMonthDays = (month % 4 == 0) ? 29 : 28;
+            totalMonthDays = (year % 4 == 0) ? 29 : 28;
         } else {
             totalMonthDays = 31;
         }
@@ -22,9 +22,17 @@ public class DateYMD {
     }
 
     public boolean leapYear(int year) {
-        if (year == 366) {
+        if (year % 4 == 0) {
             return true;
         }
         return false;
+    }
+
+    public boolean valid(int day, int month, int year) {
+        if (day > monthDays(month, year) || day <= 0
+                || !validMonth(month) || year < 1000) {
+            return false;
+        }
+        return true;
     }
 }
