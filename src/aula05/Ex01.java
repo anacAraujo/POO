@@ -6,6 +6,17 @@ class DateYMD {
     private int month;
     private int year;
 
+    public DateYMD(int day, int month, int year) {
+        if (!valid(day, month, year)) {
+            System.out.println("Invalid date.");
+            return;
+        }
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    // o set não era suposto ser individual para cada atributo?
     public void setDate(int day, int month, int year) {
         if (!valid(day, month, year)) {
             System.out.println("Invalid date.");
@@ -66,10 +77,18 @@ class DateYMD {
         return true;
     }
 
+    public void increment() { // TODO
+
+    }
+
+    public void decrement() { // TODO
+
+    }
+
 }
 
 public class Ex01 {
     public static void main(String[] args) {
-
+        // TODO menu
     }
 }
