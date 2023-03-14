@@ -1,5 +1,7 @@
 package aula05;
 
+import java.util.Scanner;
+
 class DateYMD {
 
     private int day;
@@ -77,12 +79,28 @@ class DateYMD {
         return true;
     }
 
-    public void increment() { // TODO
-
+    public void increment() {
+        this.day++;
+        if (this.day > monthDays(month, year)) {
+            this.day = 1;
+            this.month++;
+        }
+        if (this.month > 12) {
+            this.month = 1;
+            this.year++;
+        }
     }
 
-    public void decrement() { // TODO
-
+    public void decrement() {
+        this.day--;
+        if (this.day < 1) {
+            this.month--;
+            this.day = monthDays(month, year);
+        }
+        if (this.month < 1) {
+            this.month = 12;
+            this.year--;
+        }
     }
 
 }
@@ -90,5 +108,59 @@ class DateYMD {
 public class Ex01 {
     public static void main(String[] args) {
         // TODO menu
+        Scanner sc = new Scanner(System.in);
+
+        int userOption;
+        int userDay = 0;
+        int userMonth = 0;
+        int userYear = 0;
+        DateYMD userDateYMD = new DateYMD(userDay, userMonth, userYear);
+
+        do {
+            System.out.println(
+                    "Date operations:\n1 - create new date\n2 - show current date\n3 - increment date\n4 - decrement date\n0 - exit");
+            userOption = sc.nextInt();
+            switch (userOption) {
+                case 1:
+                    do {
+                        System.out.print("Enter a year: ");
+                        userYear = sc.nextInt();
+
+                        System.out.print("Enter a month: ");
+                        userMonth = sc.nextInt();
+
+                        System.out.print("Enter a day: ");
+                        userDay = sc.nextInt();
+
+                        userDateYMD = new DateYMD(userDay, userMonth, userYear);
+                        break;
+                    } while (!userDateYMD.valid(userDay, userMonth, userYear));
+                case 2:
+                    if (!userDateYMD.valid(userDay, userMonth, userYear)) {
+                        System.out.println("Enter a valid date first.");
+                        break;
+                    }
+                    System.out.println("Current date: " + userDateYMD);
+                    break;
+                case 3:
+                    if (!userDateYMD.valid(userDay, userMonth, userYear)) {
+                        System.out.println("Enter a valid date first.");
+                        break;
+                    }
+                    userDateYMD.increment();
+                    break;
+                case 4:
+                    if (!userDateYMD.valid(userDay, userMonth, userYear)) {
+                        System.out.println("Enter a valid date first.");
+                        break;
+                    }
+                    userDateYMD.decrement();
+                    break;
+                default:
+                    break;
+            }
+        } while (userOption != 0);
+
+        sc.close();
     }
 }
