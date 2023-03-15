@@ -20,20 +20,65 @@ class Calender {
         return weekDay;
     }
 
-    public void firstWeekdayOfMonth(int month) {
-        for (int i = 1; i < month; i++) {
+    public int firstWeekdayOfMonth(int month) {
+        DateYMD date = new DateYMD(1, month, year);
+        int totalDays = 0;
+        int firstWeekdayOfMonth;
 
+        for (int i = 1; i < month; i++) {
+            totalDays += date.monthDays(i, year);
         }
+
+        return firstWeekdayOfMonth = totalDays % 7;
+
     }
 
+    // TODO
     public void addEvent(DateYMD dateEvent) {
         eventos[dateEvent.getMonth()][dateEvent.getDay()] = 1;
     }
 
+    // TODO
     public void removeEvent(DateYMD dateEvent) {
         eventos[dateEvent.getMonth()][dateEvent.getDay()] = 0;
     }
 
+    // TODO
+    public String toStringMonth(int month) {
+        DateYMD date = new DateYMD(1, month, year);
+        int diaSemanaAtual = weekDay;
+        int diaAtual = 1;
+
+        String[] meses = { "", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+                "October", "November", "December" };
+        String nomeMes = meses[month];
+
+        System.out.printf("%12s %6d\n", nomeMes, year);
+        System.out.print("  Su Mo Tu We Th Fr Sa\n");
+
+        for (int i = 1; i < diaSemanaAtual; i++) {
+            System.out.print("   ");
+        }
+
+        for (int i = 1; i < date.monthDays(month, year); i++) {
+            System.out.printf("%3d", diaAtual);
+            diaAtual++;
+            diaSemanaAtual++;
+            if (diaSemanaAtual > 7) {
+                System.out.print("\n");
+                diaSemanaAtual = 1;
+            }
+        }
+        return " ";
+    }
+
+    // TODO
+    public String toStringCalendar() {
+        for (int i = 1; i < 12; i++) {
+            toStringCalendar();
+        }
+        return "";
+    }
 }
 
 public class Ex02 {
@@ -46,6 +91,7 @@ public class Ex02 {
         int day;
         int weekDay;
         int addEventUser = 3;
+        Calender userCalendar;
 
         do {
             System.out.println(
@@ -60,7 +106,7 @@ public class Ex02 {
                     System.out.print("Fist weekday of year: ");
                     weekDay = sc.nextInt();
 
-                    Calender userCalendar = new Calender(year, weekDay);
+                    userCalendar = new Calender(year, weekDay);
 
                     while (addEventUser != 0) {
                         System.out.println("Event:\n1 - add\n2 - eliminate\n0 - exit");
@@ -86,7 +132,7 @@ public class Ex02 {
                 case 2:
                     System.out.print("Month: ");
                     month = sc.nextInt();
-
+                    userCalendar.toStringMonth(month);
                     break;
                 case 3:
 
