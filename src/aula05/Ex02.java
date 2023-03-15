@@ -4,80 +4,84 @@ import java.util.Scanner;
 
 class Calender {
     private int year;
-    private int weekDay;
+    private int firstWeekdayOfYear;
     private int[][] eventos = new int[12][31];
 
-    public Calender(int year, int weekDay) {
+    public Calender(int year, int firstWeekdayOfYear) {
         this.year = year;
-        this.weekDay = weekDay;
+        this.firstWeekdayOfYear = firstWeekdayOfYear;
     }
 
-    public int getYear() {
-        return year;
+    public int year() {
+        return this.year;
     }
 
-    public int getWeekDay() {
-        return weekDay;
+    public int firstWeekdayOfYear() {
+        return this.firstWeekdayOfYear;
     }
 
     public int firstWeekdayOfMonth(int month) {
-        DateYMD date = new DateYMD(1, month, year);
         int totalDays = 0;
         int firstWeekdayOfMonth;
 
         for (int i = 1; i < month; i++) {
-            totalDays += date.monthDays(i, year);
+            totalDays += DateYMD.monthDays(i, this.year);
         }
-
-        return firstWeekdayOfMonth = totalDays % 7;
-
+        firstWeekdayOfMonth = (totalDays % 7) + 1;
+        return firstWeekdayOfMonth;
     }
 
-    // TODO
     public void addEvent(DateYMD dateEvent) {
-        eventos[dateEvent.getMonth()][dateEvent.getDay()] = 1;
+        eventos[dateEvent.getMonth() - 1][dateEvent.getDay() - 1]++;
     }
 
-    // TODO
     public void removeEvent(DateYMD dateEvent) {
-        eventos[dateEvent.getMonth()][dateEvent.getDay()] = 0;
+        if (eventos[dateEvent.getMonth() - 1][dateEvent.getDay() - 1] <= 0) {
+            return;
+        }
+        eventos[dateEvent.getMonth() - 1][dateEvent.getDay() - 1]--;
     }
 
-    // TODO
-    public String toStringMonth(int month) {
-        DateYMD date = new DateYMD(1, month, year);
-        int diaSemanaAtual = weekDay;
-        int diaAtual = 1;
+    public String printMonth(int month) {
+        int diaSemanaAtual = firstWeekdayOfMonth(month);
+        int totalMonthDays = DateYMD.monthDays(month, this.year);
+        String result = "";
 
         String[] meses = { "", "January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December" };
         String nomeMes = meses[month];
 
-        System.out.printf("%12s %6d\n", nomeMes, year);
-        System.out.print("  Su Mo Tu We Th Fr Sa\n");
+        result += String.format("%12s %6d\n", nomeMes, this.year);
+        result += "  Su  Mo  Tu  We  Th  Fr  Sa\n";
 
         for (int i = 1; i < diaSemanaAtual; i++) {
-            System.out.print("   ");
+            result += "    ";
         }
 
-        for (int i = 1; i < date.monthDays(month, year); i++) {
-            System.out.printf("%3d", diaAtual);
-            diaAtual++;
+        for (int i = 1; i <= totalMonthDays; i++) {
+            if (eventos[month - 1][i - 1] > 0) {
+                result += String.format(" *%2d", i);
+            } else {
+                result += String.format("%4d", i);
+            }
+
             diaSemanaAtual++;
             if (diaSemanaAtual > 7) {
-                System.out.print("\n");
+                result += "\n";
                 diaSemanaAtual = 1;
             }
         }
-        return " ";
+        result += "\n";
+
+        return result;
     }
 
-    // TODO
-    public String toStringCalendar() {
-        for (int i = 1; i < 12; i++) {
-            toStringCalendar();
+    public String toString() {
+        String result = "";
+        for (int i = 1; i <= 12; i++) {
+            result += printMonth(i);
         }
-        return "";
+        return result;
     }
 }
 
@@ -86,40 +90,37 @@ public class Ex02 {
         Scanner sc = new Scanner(System.in);
 
         int userInput;
-        int year;
-        int month;
-        int day;
-        int weekDay;
         int addEventUser = 3;
-        Calender userCalendar;
+        Calender userCalendar = null;
 
+        // TODO validaçao
         do {
             System.out.println(
-                    "Calendar operations:\n1 - create new calendar\n2 - print calendar month\n3 - print calendar\n0 - exit");
+                    "\nCalendar operations:\n1 - create new calendar\n2 - print calendar month\n3 - print calendar\n0 - exit");
             userInput = sc.nextInt();
 
             switch (userInput) {
                 case 1:
                     System.out.print("Year: ");
-                    year = sc.nextInt();
+                    int year = sc.nextInt();
 
                     System.out.print("Fist weekday of year: ");
-                    weekDay = sc.nextInt();
-
+                    int weekDay = sc.nextInt();
+                    // TODO validaçao
                     userCalendar = new Calender(year, weekDay);
 
                     while (addEventUser != 0) {
-                        System.out.println("Event:\n1 - add\n2 - eliminate\n0 - exit");
+                        System.out.println("Event:\n1 - add\n2 - remove\n0 - exit");
                         addEventUser = sc.nextInt();
 
                         if (addEventUser == 1) {
                             System.out.print("Month of event: ");
-                            month = sc.nextInt();
+                            int month = sc.nextInt();
 
                             System.out.print("Day of event: ");
-                            day = sc.nextInt();
+                            int day = sc.nextInt();
 
-                            DateYMD dateEvent = new DateYMD(day, month, year);
+                            DateYMD dateEvent = new DateYMD(day, month, userCalendar.year());
 
                             userCalendar.addEvent(dateEvent);
                         }
@@ -130,12 +131,14 @@ public class Ex02 {
                     }
                     break;
                 case 2:
+                    // TODO validaçao
                     System.out.print("Month: ");
-                    month = sc.nextInt();
-                    userCalendar.toStringMonth(month);
+                    int month = sc.nextInt();
+                    System.out.println(userCalendar.printMonth(month));
                     break;
                 case 3:
-
+                    // TODO validaçao
+                    System.out.println(userCalendar);
                     break;
                 default:
                     break;
