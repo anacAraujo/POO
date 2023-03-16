@@ -2,12 +2,12 @@ package aula05;
 
 import java.util.Scanner;
 
-class Calender {
+class Calendar {
     private int year;
     private int firstWeekdayOfYear;
     private int[][] eventos = new int[12][31];
 
-    public Calender(int year, int firstWeekdayOfYear) {
+    public Calendar(int year, int firstWeekdayOfYear) {
         this.year = year;
         this.firstWeekdayOfYear = firstWeekdayOfYear;
     }
@@ -83,6 +83,13 @@ class Calender {
         }
         return result;
     }
+
+    public static boolean validation(int year, int weekDay) {
+        if (year >= 1000 && weekDay >= 1 && weekDay <= 7) {
+            return true;
+        }
+        return false;
+    }
 }
 
 public class Ex02 {
@@ -91,7 +98,8 @@ public class Ex02 {
 
         int userInput;
         int addEventUser = 3;
-        Calender userCalendar = null;
+        boolean isValid = false;
+        Calendar userCalendar = null;
 
         // TODO validaçao
         do {
@@ -106,8 +114,15 @@ public class Ex02 {
 
                     System.out.print("Fist weekday of year: ");
                     int weekDay = sc.nextInt();
-                    // TODO validaçao
-                    userCalendar = new Calender(year, weekDay);
+
+                    isValid = Calendar.validation(year, weekDay);
+
+                    if (!isValid) {
+                        System.out.println("Invalid calendar. Try again.");
+                        break;
+                    }
+
+                    userCalendar = new Calendar(year, weekDay);
 
                     while (addEventUser != 0) {
                         System.out.println("Event:\n1 - add\n2 - remove\n0 - exit");
@@ -131,13 +146,19 @@ public class Ex02 {
                     }
                     break;
                 case 2:
-                    // TODO validaçao
+                    if (userCalendar == null) {
+                        System.out.println("Creat a valid calendar first.");
+                        break;
+                    }
                     System.out.print("Month: ");
                     int month = sc.nextInt();
                     System.out.println(userCalendar.printMonth(month));
                     break;
                 case 3:
-                    // TODO validaçao
+                    if (userCalendar == null) {
+                        System.out.println("Creat a valid calendar first.");
+                        break;
+                    }
                     System.out.println(userCalendar);
                     break;
                 default:
