@@ -101,7 +101,6 @@ public class Ex02 {
         boolean isValid = false;
         Calendar userCalendar = null;
 
-        // TODO validaçao
         do {
             System.out.println(
                     "\nCalendar operations:\n1 - create new calendar\n2 - print calendar month\n3 - print calendar\n0 - exit");
