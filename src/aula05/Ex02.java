@@ -97,8 +97,6 @@ public class Ex02 {
         Scanner sc = new Scanner(System.in);
 
         int userInput;
-        int addEventUser = 3;
-        boolean isValid = false;
         Calendar userCalendar = null;
 
         do {
@@ -114,7 +112,7 @@ public class Ex02 {
                     System.out.print("Fist weekday of year: ");
                     int weekDay = sc.nextInt();
 
-                    isValid = Calendar.validation(year, weekDay);
+                    boolean isValid = Calendar.validation(year, weekDay);
 
                     if (!isValid) {
                         System.out.println("Invalid calendar. Try again.");
@@ -123,24 +121,33 @@ public class Ex02 {
 
                     userCalendar = new Calendar(year, weekDay);
 
-                    while (addEventUser != 0) {
+                    while (true) {
                         System.out.println("Event:\n1 - add\n2 - remove\n0 - exit");
-                        addEventUser = sc.nextInt();
+                        int addEventUser = sc.nextInt();
+
+                        if (addEventUser == 0) {
+                            break;
+                        }
+
+                        System.out.print("Month of event: ");
+                        int month = sc.nextInt();
+
+                        System.out.print("Day of event: ");
+                        int day = sc.nextInt();
+
+                        if (!DateYMD.valid(day, month, userCalendar.year())) {
+                            System.out.println("Invalid date.");
+                            continue;
+                        }
+
+                        DateYMD dateEvent = new DateYMD(day, month, userCalendar.year());
 
                         if (addEventUser == 1) {
-                            System.out.print("Month of event: ");
-                            int month = sc.nextInt();
-
-                            System.out.print("Day of event: ");
-                            int day = sc.nextInt();
-
-                            DateYMD dateEvent = new DateYMD(day, month, userCalendar.year());
-
                             userCalendar.addEvent(dateEvent);
                         }
 
                         if (addEventUser == 2) {
-
+                            userCalendar.removeEvent(dateEvent);
                         }
                     }
                     break;
