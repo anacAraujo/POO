@@ -47,36 +47,8 @@ class Property {
         this.isAvailable = isAvailable;
     }
 
-    public String toString() {
-        String available;
-        if (this.isAvailable) {
-            available = "sim";
-        } else {
-            available = "nao";
-        }
-        return "Propriedades\nImóvel: " + this.idProperty + "; quartos: " + this.rooms
-                + "; localidade: " + this.location + "; preco: " + this.price + "; disponivel: " + available
-                + "; leilao" + this.dateInit + " : " + this.dateEnd + "\n";
-    }
-
     public static void setCurrentId(int currentId) {
         Property.currentId = currentId;
-    }
-
-    public void setIdProperty(int idProperty) {
-        this.idProperty = idProperty;
-    }
-
-    public void setRooms(int rooms) {
-        this.rooms = rooms;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public void setDateInit(DateYMD dateInit) {
@@ -86,6 +58,26 @@ class Property {
     public void setDateEnd(DateYMD dateEnd) {
         this.dateEnd = dateEnd;
     }
+
+    public String toString() {
+        String available;
+        if (this.isAvailable) {
+            available = "sim";
+        } else {
+            available = "nao";
+        }
+
+        String dates;
+        if (this.dateInit == null || !this.isAvailable) {
+            dates = "";
+        } else {
+            dates = "; leilao " + this.dateInit + " : " + this.dateEnd;
+        }
+        return "Imóvel: " + this.idProperty + "; quartos: " + this.rooms
+                + "; localidade: " + this.location + "; preco: " + this.price + "; disponivel: " + available
+                + dates + "\n";
+    }
+
 }
 
 class RealEstate {
@@ -103,10 +95,7 @@ class RealEstate {
     }
 
     public void sell(int idProperty) {
-        if (idProperty > (properties[nProperties].getIdProperty() - 1)) {
-            System.out.println("não existe.");
-            return;
-        }
+
         int position = 0;
         for (int i = 0; i < this.nProperties; i++) {
             if (this.properties[i].getIdProperty() == idProperty) {
@@ -114,17 +103,20 @@ class RealEstate {
                 break;
             }
         }
+        if (idProperty > (properties[nProperties - 1].getIdProperty())) {
+            System.out.println("Imovel " + properties[position].getIdProperty() + ": nao existe.");
+            return;
+        }
         if (properties[position].getisAvailable()) {
-            System.out.println("vendido.");
+            System.out.println("Imovel " + properties[position].getIdProperty() + ": vendido.");
         }
         if (!properties[position].getisAvailable()) {
-            System.out.println("não está disponível.");
+            System.out.println("Imovel " + properties[position].getIdProperty() + ": nao está disponível.");
         }
         properties[position].setAvailable(false);
     }
 
     public void setAuction(int idProperty, DateYMD auction, int duration) {
-        // TODO
         int position = 0;
         for (int i = 0; i < this.nProperties; i++) {
             if (this.properties[i].getIdProperty() == idProperty) {
@@ -133,10 +125,15 @@ class RealEstate {
             }
         }
         properties[position].setDateInit(auction);
+        for (int i = 1; i < duration; i++) {
+            auction.increment();
+            properties[position].setDateEnd(auction);
+        }
+
     }
 
     public String toString() {
-        String result = "";
+        String result = "propriedades:\n";
 
         for (int i = 0; i < nProperties; i++) {
 
@@ -158,7 +155,7 @@ public class Ex3 {
         imobiliaria.sell(1001);
         imobiliaria.sell(1001);
         imobiliaria.sell(1010);
-        imobiliaria.setAuction(1002, new DateYMD(21, 3, 2023), 4);
+        imobiliaria.setAuction(1002, new DateYMD(21, 03, 2023), 4);
         imobiliaria.setAuction(1003, new DateYMD(1, 4, 2023), 3);
         imobiliaria.setAuction(1001, new DateYMD(1, 4, 2023), 4);
         imobiliaria.setAuction(1010, new DateYMD(1, 4, 2023), 4);
