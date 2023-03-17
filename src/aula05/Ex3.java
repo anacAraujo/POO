@@ -74,7 +74,7 @@ class Property {
             dates = "; leilao " + this.dateInit + " : " + this.dateEnd;
         }
         return "Imóvel: " + this.idProperty + "; quartos: " + this.rooms
-                + "; localidade: " + this.location + "; preco: " + this.price + "; disponivel: " + available
+                + "; localidade: " + this.location + "; preço: " + this.price + "; disponivel: " + available
                 + dates + "\n";
     }
 
@@ -95,7 +95,10 @@ class RealEstate {
     }
 
     public void sell(int idProperty) {
-
+        if (idProperty > (properties[nProperties - 1].getIdProperty())) {
+            System.out.println("Imovel " + idProperty + ": nao existe.");
+            return;
+        }
         int position = 0;
         for (int i = 0; i < this.nProperties; i++) {
             if (this.properties[i].getIdProperty() == idProperty) {
@@ -103,21 +106,22 @@ class RealEstate {
                 break;
             }
         }
-        if (idProperty > (properties[nProperties - 1].getIdProperty())) {
-            System.out.println("Imovel " + properties[position].getIdProperty() + ": nao existe.");
+        if (position < 0) {
+            System.out.println("Imovel " + idProperty + ": nao existe.");
             return;
         }
         if (properties[position].getisAvailable()) {
-            System.out.println("Imovel " + properties[position].getIdProperty() + ": vendido.");
+            System.out.println("Imovel " + idProperty + ": vendido.");
         }
         if (!properties[position].getisAvailable()) {
-            System.out.println("Imovel " + properties[position].getIdProperty() + ": nao está disponível.");
+            System.out.println("Imovel " + idProperty + ": nao está disponível.");
         }
         properties[position].setAvailable(false);
     }
 
     public void setAuction(int idProperty, DateYMD auction, int duration) {
         int position = 0;
+        DateYMD end = new DateYMD(auction.getDay(), auction.getMonth(), auction.getYear());
         for (int i = 0; i < this.nProperties; i++) {
             if (this.properties[i].getIdProperty() == idProperty) {
                 position = i;
@@ -126,14 +130,13 @@ class RealEstate {
         }
         properties[position].setDateInit(auction);
         for (int i = 1; i < duration; i++) {
-            auction.increment();
-            properties[position].setDateEnd(auction);
+            end.increment();
+            properties[position].setDateEnd(end);
         }
-
     }
 
     public String toString() {
-        String result = "propriedades:\n";
+        String result = "Propriedades:\n";
 
         for (int i = 0; i < nProperties; i++) {
 
