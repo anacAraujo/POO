@@ -1,5 +1,8 @@
 package aula05;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Property {
 
     private static int currentId = 1000;
@@ -73,30 +76,28 @@ class Property {
                 + "; localidade: " + this.location + "; preço: " + this.price + "; disponivel: " + available
                 + dates + "\n";
     }
-
 }
 
 class RealEstate {
-    private Property[] properties;
-    private int nProperties;
+    private List<Property> properties;
 
     public RealEstate() {
-        this.properties = new Property[5];
-        this.nProperties = 0;
+        this.properties = new ArrayList<Property>();
     }
 
     public void newProperty(String location, int rooms, int price) {
-        this.properties[nProperties] = new Property(location, rooms, price);
-        this.nProperties++;
+        Property property = new Property(location, rooms, price);
+        this.properties.add(property);
     }
 
     private Property getProperty(int idProperty) {
-        if (idProperty > (this.properties[nProperties - 1].getIdProperty())) {
+        Property lastProperty = this.properties.get(this.properties.size() - 1);
+        if (idProperty > lastProperty.getIdProperty()) {
             return null;
         }
-        for (int i = 0; i < this.nProperties; i++) {
-            if (this.properties[i].getIdProperty() == idProperty) {
-                return this.properties[i];
+        for (Property property : this.properties) {
+            if (property.getIdProperty() == idProperty) {
+                return property;
             }
         }
         return null;
@@ -141,7 +142,7 @@ class RealEstate {
         // result += this.properties[i].toString();
         // }
 
-        for (Property property : properties) {
+        for (Property property : this.properties) {
             result += property.toString();
         }
         return result;
