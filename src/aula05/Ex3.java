@@ -47,10 +47,6 @@ class Property {
         this.isAvailable = isAvailable;
     }
 
-    public static void setCurrentId(int currentId) {
-        Property.currentId = currentId;
-    }
-
     public void setDateInit(DateYMD dateInit) {
         this.dateInit = dateInit;
     }
@@ -85,7 +81,7 @@ class RealEstate {
     private int nProperties;
 
     public RealEstate() {
-        this.properties = new Property[90];
+        this.properties = new Property[5];
         this.nProperties = 0;
     }
 
@@ -141,8 +137,12 @@ class RealEstate {
     public String toString() {
         String result = "Propriedades:\n";
 
-        for (int i = 0; i < this.nProperties; i++) {
-            result += this.properties[i].toString();
+        // for (int i = 0; i < this.nProperties; i++) {
+        // result += this.properties[i].toString();
+        // }
+
+        for (Property property : properties) {
+            result += property.toString();
         }
         return result;
     }
