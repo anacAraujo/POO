@@ -90,57 +90,59 @@ class RealEstate {
     }
 
     public void newProperty(String location, int rooms, int price) {
-        properties[nProperties] = new Property(location, rooms, price);
-        nProperties++;
+        this.properties[nProperties] = new Property(location, rooms, price);
+        this.nProperties++;
+    }
+
+    private Property getProperty(int idProperty) {
+        if (idProperty > (this.properties[nProperties - 1].getIdProperty())) {
+            return null;
+        }
+        for (int i = 0; i < this.nProperties; i++) {
+            if (this.properties[i].getIdProperty() == idProperty) {
+                return this.properties[i];
+            }
+        }
+        return null;
     }
 
     public void sell(int idProperty) {
-        if (idProperty > (properties[nProperties - 1].getIdProperty())) {
+        Property property = this.getProperty(idProperty);
+
+        if (property == null) {
             System.out.println("Imovel " + idProperty + ": nao existe.");
             return;
         }
-        int position = 0;
-        for (int i = 0; i < this.nProperties; i++) {
-            if (this.properties[i].getIdProperty() == idProperty) {
-                position = i;
-                break;
-            }
-        }
-        if (position < 0) {
-            System.out.println("Imovel " + idProperty + ": nao existe.");
-            return;
-        }
-        if (properties[position].getisAvailable()) {
+
+        if (property.getisAvailable()) {
+            property.setAvailable(false);
             System.out.println("Imovel " + idProperty + ": vendido.");
-        }
-        if (!properties[position].getisAvailable()) {
+        } else {
             System.out.println("Imovel " + idProperty + ": nao está disponível.");
         }
-        properties[position].setAvailable(false);
     }
 
     public void setAuction(int idProperty, DateYMD auction, int duration) {
-        int position = 0;
-        DateYMD end = new DateYMD(auction.getDay(), auction.getMonth(), auction.getYear());
-        for (int i = 0; i < this.nProperties; i++) {
-            if (this.properties[i].getIdProperty() == idProperty) {
-                position = i;
-                break;
-            }
+        Property property = this.getProperty(idProperty);
+
+        if (property == null) {
+            return;
         }
-        properties[position].setDateInit(auction);
+
+        DateYMD end = new DateYMD(auction.getDay(), auction.getMonth(), auction.getYear());
+
+        property.setDateInit(auction);
         for (int i = 1; i < duration; i++) {
             end.increment();
-            properties[position].setDateEnd(end);
         }
+        property.setDateEnd(end);
     }
 
     public String toString() {
         String result = "Propriedades:\n";
 
-        for (int i = 0; i < nProperties; i++) {
-
-            result += properties[i].toString();
+        for (int i = 0; i < this.nProperties; i++) {
+            result += this.properties[i].toString();
         }
         return result;
     }
@@ -164,6 +166,5 @@ public class Ex3 {
         imobiliaria.setAuction(1010, new DateYMD(1, 4, 2023), 4);
 
         System.out.println(imobiliaria);
-
     }
 }
