@@ -13,7 +13,7 @@ class Pessoa {
             return;
         }
         if (!validPessoa(nome, cc)) {
-            System.out.println("Dados invalidos.");
+            System.out.println("Dados.");
             return;
         }
         this.nome = nome;
@@ -29,6 +29,9 @@ class Pessoa {
         return false;
     }
 
+    public String getNome() {
+        return nome;
+    }
 }
 
 public class Ex1 {
