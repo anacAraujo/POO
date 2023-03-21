@@ -14,13 +14,13 @@ public class Aluno extends Pessoa {
     public Aluno(String iNome, int iBI, DateYMD iDataNasc, DateYMD iDataInsc) {
         super(iNome, iBI, iDataNasc);
 
-        // if (iDataInsc == null) {
-        // LocalDate dataAtual = LocalDate.now();
-        // this.dataInsc = dataAtual;
-        // } else {
-        // this.dataInsc = iDataInsc;
-        // }
-        this.dataInsc = iDataInsc;
+        if (dataInsc == null) {
+            LocalDate dataatual = LocalDate.now();
+            DateYMD dataAtual = new DateYMD(dataatual.getDayOfMonth(), dataatual.getMonthValue(), dataatual.getYear());
+            this.dataInsc = dataAtual;
+        } else {
+            this.dataInsc = iDataInsc;
+        }
 
         this.nMec = currentMec;
         Aluno.currentMec++;
@@ -28,6 +28,10 @@ public class Aluno extends Pessoa {
 
     public Aluno(String iNome, int iBI, DateYMD iDataNasc) {
         super(iNome, iBI, iDataNasc);
+
+        LocalDate dataatual = LocalDate.now();
+        DateYMD dataAtual = new DateYMD(dataatual.getDayOfMonth(), dataatual.getMonthValue(), dataatual.getYear());
+        this.dataInsc = dataAtual;
 
         this.nMec = currentMec;
         Aluno.currentMec++;
