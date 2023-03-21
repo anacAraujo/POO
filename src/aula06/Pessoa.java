@@ -13,7 +13,7 @@ public class Pessoa {
             return;
         }
         if (!validPessoa(nome, cc)) {
-            System.out.println("Dados.");
+            System.out.println("Dados invalidos.");
             return;
         }
         this.nome = nome;
