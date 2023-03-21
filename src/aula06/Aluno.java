@@ -12,7 +12,7 @@ public class Aluno extends Pessoa {
     private static int currentMec = 100;
 
     private int nMec;
-    private DateTime dataInsc;
+    private DateYMD dataInsc;
 
     public Aluno(String iNome, int iBI, DateYMD iDataNasc, DateYMD iDataInsc) {
         super(iNome, iBI, iDataNasc);
@@ -26,7 +26,7 @@ public class Aluno extends Pessoa {
     public Aluno(String iNome, int iBI, DateYMD iDataNasc) {
         super(iNome, iBI, iDataNasc);
 
-        this.dataInsc = java.time.LocalDate.now();
+        // this.dataInsc = java.time.LocalDate.now();
 
         this.nMec = currentMec;
         Aluno.currentMec++;
