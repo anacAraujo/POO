@@ -6,8 +6,8 @@ public class Bolseiro extends Aluno {
     private Professor orientador;
     private int montante;
 
-    public Bolseiro(String nome, int cc, DateYMD dataNasc, Professor orientador, int montante) {
-        super(nome, cc, dataNasc);
+    public Bolseiro(String nome, int cc, DateYMD dataNasc, /* DateYMD dataInsc, */ Professor orientador, int montante) {
+        super(nome, cc, dataNasc/* , dataInsc */);
         this.orientador = orientador;
         this.montante = montante;
     }
@@ -24,4 +24,15 @@ public class Bolseiro extends Aluno {
         this.montante = montante;
     }
 
+    public String toString() {
+        return String.format(
+                "%2s; CC:%2d; Data de nascimento:%2; Número mecangrafico:%2d; Data de inscrição:%2; Orientador:%2s; Bolsa:%2d\n",
+                this.getName(),
+                this.getCC(),
+                this.getDataNasc(),
+                this.getNMec(),
+                this.getDataInsc(),
+                this.orientador,
+                this.montante);
+    }
 }
