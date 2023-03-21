@@ -19,7 +19,7 @@ class Contacto {
         Contacto.currentID++;
     }
 
-    public boolean validContact(int numTelemovel) {
+    public static boolean validContact(int numTelemovel) {
         String numTele = Integer.toString(numTelemovel);
         if (numTele.matches("\\d{9}") && numTele.matches("\\^9")) {
             return true;
@@ -52,6 +52,21 @@ public class Ex2 {
                     int day = Integer.parseInt(elementosData[0]);
                     int month = Integer.parseInt(elementosData[1]);
                     int year = Integer.parseInt(elementosData[2]);
+                    DateYMD nascimento = new DateYMD(day, month, year);
+
+                    System.out.print("Numero telemovel: ");
+                    int numTele = sc.nextInt();
+                    boolean valido = Contacto.validContact(numTele);
+                    if (!valido) {
+                        System.out.println("Numero invalido.");
+                        break;
+                    }
+
+                    System.out.print("Email: ");
+                    String mail = sc.nextLine();
+
+                    Pessoa pessoa = new Pessoa(nome, cc, nascimento);
+                    Contacto contacto = new Contacto(numTele, mail, pessoa);
                     break;
                 case 2:
 
