@@ -33,4 +33,8 @@ public class Professor extends Pessoa {
         return departamento;
     }
 
+    public String getNomeProfessor() {
+        return this.getNome();
+    }
+
 }
