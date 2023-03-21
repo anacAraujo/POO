@@ -2,7 +2,7 @@ package aula06;
 
 import aula05.DateYMD;
 
-class Pessoa {
+public class Pessoa {
     private String nome;
     private int cc;
     private DateYMD dataNasc;
@@ -32,8 +32,4 @@ class Pessoa {
     public String getNome() {
         return nome;
     }
-}
-
-public class Ex1 {
-
 }
