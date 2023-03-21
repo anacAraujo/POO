@@ -32,4 +32,11 @@ public class Pessoa {
     public String getNome() {
         return nome;
     }
+
+    public String toString() {
+        return String.format("%2s; CC: %2d; Data de nascimento: %2\n",
+                this.nome,
+                this.cc,
+                this.dataNasc);
+    }
 }
