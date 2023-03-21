@@ -42,9 +42,8 @@ public class Pessoa {
     }
 
     public String toString() {
-        return String.format("%2s; CC: %2d; Data de nascimento: %2\n",
+        return String.format("%2s; CC: %2d; Data de nascimento: " + this.dataNasc + "\n",
                 this.nome,
-                this.cc,
-                this.dataNasc);
+                this.cc);
     }
 }
