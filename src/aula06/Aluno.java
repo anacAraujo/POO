@@ -46,11 +46,11 @@ public class Aluno extends Pessoa {
     }
 
     public String toString() {
-        return String.format("%2s; CC:%2d; Data de nascimento:%2; Número mecangrafico:%2d; Data de inscrição:%2\n",
+        return String.format(
+                "%2s; CC:%2d; Data de nascimento: " + this.getDataNasc()
+                        + "; Número mecangrafico:%2d; Data de inscrição: " + this.dataInsc + "\n",
                 this.getName(),
                 this.getCC(),
-                this.getDataNasc(),
-                this.nMec,
-                this.dataInsc);
+                this.nMec);
     }
 }
