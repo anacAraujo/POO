@@ -26,8 +26,9 @@ public class Aluno extends Pessoa {
     public Aluno(String iNome, int iBI, DateYMD iDataNasc) {
         super(iNome, iBI, iDataNasc);
 
-        // this.dataInsc = java.time.LocalDate.now();
-
+        LocalDate dataAtual = java.time.LocalDate.now();
+        // dataInsc.setDate(iBI, , iBI);
+        // Integer.parseInt(dataAtual.getMonth());
         this.nMec = currentMec;
         Aluno.currentMec++;
     }
@@ -37,4 +38,9 @@ public class Aluno extends Pessoa {
         return this.nMec;
     } // retorna o número mecanográfico
       // ... acrescentar métodos necessários
+
+    public String getName() {
+        return this.getNome();
+    }
+
 }
