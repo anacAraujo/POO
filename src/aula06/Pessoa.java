@@ -30,7 +30,15 @@ public class Pessoa {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
+    }
+
+    public int getCC() {
+        return this.cc;
+    }
+
+    public DateYMD getDataNasc() {
+        return this.dataNasc;
     }
 
     public String toString() {
