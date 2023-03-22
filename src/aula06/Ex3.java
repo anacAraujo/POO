@@ -29,20 +29,23 @@ class Conjunto {
     // - para remover um elemento do conjunto. Caso este elemento não se encontre no
     // conjunto, a função não faz nada.
     public void remove(int n) {
-        int pos;
+        if (this.conjunto == null) {
+            System.out.println("Conjunto não existe.");
+            return;
+        }
+
         for (int i = 0; i < conjunto.length; i++) {
-            if (this.conjunto[i] == n) {
-                pos = i;
-                for (int j = pos; j < conjunto.length; j++) {
-                    this.conjunto[j] = this.conjunto[j + 1];
-                }
-            }
+
         }
 
     }
 
     // para apagar todos os elementos do conjunto
     public void empty() {
+        if (this.conjunto == null) {
+            System.out.println("Conjunto não existe.");
+            return;
+        }
 
     }
 
