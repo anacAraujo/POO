@@ -6,12 +6,8 @@ public class Test {
         public static void main(String[] args) {
                 Aluno al = new Aluno("Andreia Melo", 98556788,
                                 new DateYMD(18, 7, 1990), new DateYMD(1, 9, 2018));
-                Aluno al2 = new Aluno("    ", 98556788,
-                                new DateYMD(18, 7, 1990), new DateYMD(1, 9, 2018));
                 Professor p1 = new Professor("Jorge Almeida", 34672258, new DateYMD(13, 3, 1967),
                                 "Associado", "Informática");
-                Professor p2 = new Professor("Jorge Almeida", 34672258, new DateYMD(13, 3, 1967),
-                                "Taxista", "Informática");
                 Bolseiro bls = new Bolseiro("Igor Santos", 89765438, new DateYMD(11, 5, 1985), p1,
                                 900);
                 bls.setBolsa(1050);
