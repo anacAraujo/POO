@@ -27,14 +27,7 @@ public class Aluno extends Pessoa {
     }
 
     public Aluno(String iNome, int iBI, DateYMD iDataNasc) {
-        super(iNome, iBI, iDataNasc);
-
-        LocalDate dataatual = LocalDate.now();
-        DateYMD dataAtual = new DateYMD(dataatual.getDayOfMonth(), dataatual.getMonthValue(), dataatual.getYear());
-        this.dataInsc = dataAtual;
-
-        this.nMec = currentMec;
-        Aluno.currentMec++;
+        this(iNome, iBI, iDataNasc, null);
     }
 
     public int getNMec() {
