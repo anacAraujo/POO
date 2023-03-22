@@ -23,10 +23,10 @@ public class Pessoa {
 
     public static boolean validPessoa(String nome, int numcc) {
         String cc = Integer.toString(numcc);
-        if (nome != "" || nome.matches("[^0-9]") || cc.matches("^[0-9]{8}$)")) {
-            return true;
+        if (nome == "" || nome.matches("\\d+") || !cc.matches("[0-9]{7}")) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public String getNome() {
@@ -42,7 +42,7 @@ public class Pessoa {
     }
 
     public String toString() {
-        return String.format("%2s; CC: %2d; Data de nascimento: " + this.dataNasc + "\n",
+        return String.format("%2s; CC: %2d; Data de nascimento: " + this.dataNasc,
                 this.nome,
                 this.cc);
     }
