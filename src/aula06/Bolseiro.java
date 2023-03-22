@@ -26,12 +26,7 @@ public class Bolseiro extends Aluno {
 
     public String toString() {
         return String.format(
-                "%2s; CC:%2d; Data de nascimento: " + this.getDataNasc()
-                        + "; Número mecangrafico:%2d; Data de inscrição: " + this.getDataInsc()
-                        + "; Orientador:%2s; Bolsa:%2d\n",
-                this.getName(),
-                this.getCC(),
-                this.getNMec(),
+                super.toString() + "; Orientador:%2s; Bolsa:%2d\n",
                 this.orientador,
                 this.montante);
     }
