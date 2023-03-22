@@ -32,6 +32,7 @@ public class Bolseiro extends Aluno {
         this.montante = montante;
     }
 
+    @Override
     public String toString() {
         return String.format(
                 "%s; Orientador: %s; Bolsa: %d\n",

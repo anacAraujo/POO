@@ -37,6 +37,7 @@ public class Aluno extends Pessoa {
         return this.dataInsc;
     }
 
+    @Override
     public String toString() {
         return String.format(
                 "%s; Número mecangrafico: %d; Data de inscrição: %s",

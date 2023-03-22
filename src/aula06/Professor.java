@@ -31,6 +31,7 @@ public class Professor extends Pessoa {
         return departamento;
     }
 
+    @Override
     public String toString() {
         return String.format(
                 "%s; Categoria: %s; Departamento: %s",

@@ -41,6 +41,7 @@ public class Pessoa {
         return this.dataNasc;
     }
 
+    @Override
     public String toString() {
         return String.format("%s; CC: %d; Data de nascimento: %s",
                 this.nome,
