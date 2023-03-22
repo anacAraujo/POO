@@ -18,8 +18,8 @@ class Conjunto {
 
     // – para indicar se um dado elemento está no conjunto.
     public boolean contains(int n) {
-        for (int i : conjunto) {
-            if (i == n) {
+        for (int i = 0; i < conjunto.length; i++) {
+            if (this.conjunto[i] == n) {
                 return true;
             }
         }
@@ -29,6 +29,15 @@ class Conjunto {
     // - para remover um elemento do conjunto. Caso este elemento não se encontre no
     // conjunto, a função não faz nada.
     public void remove(int n) {
+        int pos;
+        for (int i = 0; i < conjunto.length; i++) {
+            if (this.conjunto[i] == n) {
+                pos = i;
+                for (int j = pos; j < conjunto.length; j++) {
+                    this.conjunto[j] = this.conjunto[j + 1];
+                }
+            }
+        }
 
     }
 
