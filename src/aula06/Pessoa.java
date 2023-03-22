@@ -46,4 +46,12 @@ public class Pessoa {
                 this.nome,
                 this.cc);
     }
+
+    public boolean equals(Pessoa outraPessoa) {
+        if (this.nome == outraPessoa.nome && this.cc == outraPessoa.cc && this.dataNasc == outraPessoa.dataNasc) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
