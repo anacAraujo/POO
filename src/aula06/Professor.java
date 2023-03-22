@@ -38,7 +38,7 @@ public class Professor extends Pessoa {
     }
 
     public String toString() {
-        return String.format(super.toString() + "; Categoria:%2s; Departamento:%2s",
+        return String.format(super.toString() + "; Categoria: %2s; Departamento: %2s",
                 this.categoria,
                 this.departamento);
     }
