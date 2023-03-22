@@ -1,21 +1,28 @@
 package aula06;
 
 class Conjunto {
+    private static int currentPos = 0;
+
     int[] conjunto;
-
-    public Conjunto() {
-
-    }
 
     // – para inserir um elemento novo no conjunto. Caso este elemento já exista,
     // a função não faz nada. Inicialmente não se sabe quantos elementos vamos
     // inserir.
     public void insert(int n) {
-
+        if (contains(n)) {
+            return;
+        }
+        conjunto[currentPos] = n;
+        currentPos++;
     }
 
     // – para indicar se um dado elemento está no conjunto.
     public boolean contains(int n) {
+        for (int i : conjunto) {
+            if (i == n) {
+                return true;
+            }
+        }
         return false;
     }
 
