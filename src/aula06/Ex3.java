@@ -5,6 +5,10 @@ class Conjunto {
 
     int[] conjunto;
 
+    public Conjunto() {
+        conjunto = new int[10];
+    }
+
     // – para inserir um elemento novo no conjunto. Caso este elemento já exista,
     // a função não faz nada. Inicialmente não se sabe quantos elementos vamos
     // inserir.
@@ -33,9 +37,14 @@ class Conjunto {
             System.out.println("Conjunto não existe.");
             return;
         }
-
+        int pos;
         for (int i = 0; i < conjunto.length; i++) {
-
+            if (this.conjunto[i] == n) {
+                pos = i;
+                for (int j = pos; j < conjunto.length - 1; j++) {
+                    this.conjunto[j] = this.conjunto[j + 1];
+                }
+            }
         }
 
     }
@@ -50,13 +59,16 @@ class Conjunto {
     }
 
     public String toString() {
-        return "";
+        String result = "";
+        for (int i = 0; i < conjunto.length; i++) {
+            result += String.format("%2d", this.conjunto[i]);
+        }
+        return result;
     }
 
     // - para calcular o número de elementos no conjunto.
     public int size() {
-        int a = 1;
-        return a;
+        return this.conjunto.length;
     }
 }
 

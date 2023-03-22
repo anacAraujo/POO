@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 class Contacto {
     private static int currentID = 1;
-    private static Pessoa[] pessoas;
+    private static Pessoa[] pessoas = new Pessoa[5];
 
     private int id;
     private String numTelemovel;
@@ -130,7 +130,7 @@ public class Ex2 {
 
                     break;
                 case 5:
-
+                    System.out.println();
                     break;
                 default:
                     break;
