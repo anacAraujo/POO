@@ -5,16 +5,15 @@ import java.time.LocalDate;
 import aula05.DateYMD;
 
 public class Aluno extends Pessoa {
-    // ... definição de atributos
     private static int currentMec = 100;
 
     private int nMec;
-    private DateYMD dataInsc = null;
+    private DateYMD dataInsc;
 
     public Aluno(String iNome, int iBI, DateYMD iDataNasc, DateYMD iDataInsc) {
         super(iNome, iBI, iDataNasc);
 
-        if (dataInsc == null) {
+        if (iDataInsc == null) {
             LocalDate dataatual = LocalDate.now();
             DateYMD dataAtual = new DateYMD(dataatual.getDayOfMonth(), dataatual.getMonthValue(), dataatual.getYear());
             this.dataInsc = dataAtual;
@@ -38,13 +37,11 @@ public class Aluno extends Pessoa {
         return this.dataInsc;
     }
 
-    public String getName() {
-        return this.getNome();
-    }
-
     public String toString() {
         return String.format(
-                super.toString() + "; Número mecangrafico:%2d; Data de inscrição: " + this.dataInsc + "\n",
-                this.nMec);
+                "%s; Número mecangrafico: %d; Data de inscrição: %s",
+                super.toString(),
+                this.nMec,
+                this.dataInsc.toString());
     }
 }

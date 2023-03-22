@@ -1,27 +1,25 @@
 package aula06;
 
+import java.util.Arrays;
+import java.util.List;
+
 import aula05.DateYMD;
 
 public class Professor extends Pessoa {
+    private static List<String> categorias = Arrays.asList("Auxiliar", "Associado", "Catedrático");
+
     private String categoria;
     private String departamento;
 
     public Professor(String nome, int cc, DateYMD dataNasc, String catgr, String dep) {
         super(nome, cc, dataNasc);
-        switch (catgr) {
-            case "Auxiliar":
-                this.categoria = catgr;
-                break;
-            case "Associado":
-                this.categoria = catgr;
-                break;
-            case "Catedrático":
-                this.categoria = catgr;
-                break;
-            default:
-                System.out.println("Categoria invalida.");
-                return;
+
+        if (categorias.indexOf(catgr) == -1) {
+            System.out.println("Categoria invalida.");
+            return;
         }
+
+        this.categoria = catgr;
         this.departamento = dep;
     }
 
@@ -33,12 +31,10 @@ public class Professor extends Pessoa {
         return departamento;
     }
 
-    public String getNomeProfessor() {
-        return this.getNome();
-    }
-
     public String toString() {
-        return String.format(super.toString() + "; Categoria: %2s; Departamento: %2s",
+        return String.format(
+                "%s; Categoria: %s; Departamento: %s",
+                super.toString(),
                 this.categoria,
                 this.departamento);
     }

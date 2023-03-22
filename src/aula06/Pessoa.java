@@ -23,13 +23,13 @@ public class Pessoa {
 
     public static boolean validPessoa(String nome, int numcc) {
         String cc = Integer.toString(numcc);
-        if (nome == "" || nome.matches("\\d+") || !cc.matches("[0-9]{7}")) {
+        if (!nome.strip().matches("[a-zA-Z\s]+") || !cc.matches("[0-9]{8}")) {
             return false;
         }
         return true;
     }
 
-    public String getNome() {
+    public String getName() {
         return this.nome;
     }
 
@@ -42,16 +42,16 @@ public class Pessoa {
     }
 
     public String toString() {
-        return String.format("%2s; CC: %2d; Data de nascimento: " + this.dataNasc,
+        return String.format("%s; CC: %d; Data de nascimento: %s",
                 this.nome,
-                this.cc);
+                this.cc,
+                this.dataNasc.toString());
     }
 
     public boolean equals(Pessoa outraPessoa) {
         if (this.nome == outraPessoa.nome && this.cc == outraPessoa.cc && this.dataNasc == outraPessoa.dataNasc) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

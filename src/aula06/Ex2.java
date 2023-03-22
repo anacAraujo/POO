@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 class Contacto {
     private static int currentID = 1;
+    // TODO
     private static Pessoa[] pessoas = new Pessoa[5];
 
     private int id;

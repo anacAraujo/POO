@@ -26,7 +26,8 @@ public class Bolseiro extends Aluno {
 
     public String toString() {
         return String.format(
-                super.toString() + "; Orientador:%2s; Bolsa:%2d\n",
+                "%s; Orientador:%2s; Bolsa:%2d\n",
+                super.toString(),
                 this.orientador,
                 this.montante);
     }
