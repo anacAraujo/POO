@@ -36,6 +36,7 @@ public class ContactosInstituicao {
                 result.add(contacto);
             }
         }
+
         return result;
     }
 
@@ -53,8 +54,29 @@ public class ContactosInstituicao {
         this.contactos.remove(contacto);
     }
 
-    public void alterarContacto(Contacto contacto) {
+    public void alterarContactonum(Contacto contacto, String num) {
+        for (Contacto contacto2 : contactos) {
+            if (contacto2.equals(contacto)) {
+                contacto.setNumTelemovel(num);
+            }
+        }
+    }
 
+    // public void alterarContactoEmail(Contacto contacto, String email) {
+    // for (Contacto contacto2 : contactos) {
+    // if (contacto2.equals(contacto)) {
+    // contacto.setEmail(email);
+    // }
+    // }
+    // }
+
+    public boolean verificarPessoaRepetida(Pessoa pessoa) {
+        for (Contacto contacto : contactos) {
+            if (contacto.getPessoa().equals(pessoa)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
