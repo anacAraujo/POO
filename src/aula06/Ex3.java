@@ -70,6 +70,26 @@ class Conjunto {
     public int size() {
         return this.conjunto.length;
     }
+
+    // para construir um conjunto novo que representa a união de dois conjuntos. O
+    // conjunto resultante não deve conter elementos repetidos.
+    public Conjunto combine(Conjunto add) {
+        Conjunto juncao = new Conjunto();
+        return juncao;
+    }
+
+    // para construir um conjunto novo que representa a diferença do this e dos
+    // elementos do conjunto representado pelo objeto dif
+    public Conjunto subtract(Conjunto dif) {
+
+    }
+
+    // para construir um conjunto novo que representa a intersecção do this com os
+    // elementos do conjunto representado pelo objeto inter. O conjunto resultante
+    // não pode conter elementos repetidos.
+    public Conjunto intersect(Conjunto inter) {
+
+    }
 }
 
 public class Ex3 {
@@ -93,9 +113,9 @@ public class Ex3 {
 
         System.out.println("c1 contém 6?: " + ((c1.contains(6) ? "sim" : "não")));
         System.out.println("c2 contém 6?: " + ((c2.contains(6) ? "sim" : "não")));
-        // System.out.println("União:" + c1.combine(c2));
-        // System.out.println("Interseção:" + c1.intersect(c2));
-        // System.out.println("Diferença:" + c1.subtract(c2));
+        System.out.println("União:" + c1.combine(c2));
+        System.out.println("Interseção:" + c1.intersect(c2));
+        System.out.println("Diferença:" + c1.subtract(c2));
         c1.empty();
         System.out.println("c1:" + c1);
     }
