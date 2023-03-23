@@ -20,10 +20,9 @@ public class ContactosInstituicao {
         for (Contacto contacto : contactos) {
             if (contacto.getNumTelemovel() == num) {
                 return contacto;
-            } else {
-                System.out.println("Contacto não existe.");
             }
         }
+        System.out.println("Contacto não existe.");
         return null;
     }
 
@@ -36,7 +35,6 @@ public class ContactosInstituicao {
                 result.add(contacto);
             }
         }
-
         return result;
     }
 
@@ -45,8 +43,8 @@ public class ContactosInstituicao {
             if (contacto.getId() == id) {
                 return contacto;
             }
-            System.out.println("Id invalido.");
         }
+        System.out.println("Id invalido.");
         return null;
     }
 
