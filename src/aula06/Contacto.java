@@ -33,6 +33,10 @@ public class Contacto {
         return this.numTelemovel;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setNumTelemovel(String numTelemovel) {
         this.numTelemovel = numTelemovel;
     }
@@ -74,10 +78,8 @@ public class Contacto {
             return false;
         }
 
-        // typecast o to Complex so that we can compare data members
         Contacto c = (Contacto) obj;
 
-        // Compare the data members and return accordingly
         return this.id == c.id;
     }
 
@@ -90,7 +92,4 @@ public class Contacto {
                 this.email);
     }
 
-    public static void setCurrentID(int currentID) {
-        Contacto.currentID = currentID;
-    }
 }
