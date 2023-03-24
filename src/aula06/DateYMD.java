@@ -110,6 +110,6 @@ public class DateYMD {
 
     @Override
     public String toString() {
-        return this.year + "-" + this.month + "-" + this.day;
+        return this.day + "/" + this.month + "/" + this.year;
     }
 }
