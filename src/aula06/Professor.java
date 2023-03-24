@@ -3,8 +3,6 @@ package aula06;
 import java.util.Arrays;
 import java.util.List;
 
-import aula05.DateYMD;
-
 public class Professor extends Pessoa {
     private static List<String> categorias = Arrays.asList("Auxiliar", "Associado", "Catedrático");
 
