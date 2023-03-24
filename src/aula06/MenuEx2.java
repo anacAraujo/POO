@@ -1,6 +1,5 @@
 package aula06;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class MenuEx2 {
@@ -15,8 +14,6 @@ public class MenuEx2 {
             System.out.println(
                     "1 - Inserir contacto;\n2 - Alterar contacto;\n3 - Apagar contacto;\n4 - Procurar contacto\n5 - Listar contactos\n0 - Sair");
             inputUser = sc.nextInt();
-
-            int userProcurar = 0;
 
             switch (inputUser) {
                 case 1:
