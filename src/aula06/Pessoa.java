@@ -1,7 +1,5 @@
 package aula06;
 
-import aula05.DateYMD;
-
 public class Pessoa {
     private String nome;
     private int cc;
@@ -49,7 +47,12 @@ public class Pessoa {
                 this.dataNasc.toString());
     }
 
-    public boolean equals(Pessoa outraPessoa) {
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Pessoa)) {
+            return false;
+        }
+        Pessoa outraPessoa = (Pessoa) obj;
         if (this.nome == outraPessoa.nome && this.cc == outraPessoa.cc && this.dataNasc == outraPessoa.dataNasc) {
             return true;
         }
