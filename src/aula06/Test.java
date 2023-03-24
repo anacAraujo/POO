@@ -1,7 +1,5 @@
 package aula06;
 
-import aula05.DateYMD;
-
 public class Test {
         public static void main(String[] args) {
                 Aluno al = new Aluno("Andreia Melo", 98556788,
