@@ -32,10 +32,17 @@ public class MenuEx2 {
                     int day = Integer.parseInt(elementosData[0]);
                     int month = Integer.parseInt(elementosData[1]);
                     int year = Integer.parseInt(elementosData[2]);
-                    // TODO validar data
+
+                    if (!DateYMD.valid(day, month, year)) {
+                        System.out.println("Data invalida.");
+                        break;
+                    }
                     DateYMD nascimento = new DateYMD(day, month, year);
 
-                    // TODO validar pessoa
+                    if (!Pessoa.validPessoa(nome, cc)) {
+                        System.out.println("Dados invalidos.");
+                        break;
+                    }
                     Pessoa pessoa = new Pessoa(nome, cc, nascimento);
 
                     if (inst.verificarPessoaRepetida(pessoa)) {
@@ -63,82 +70,25 @@ public class MenuEx2 {
                         break;
                     }
 
-                    // TODO validar contacto
+                    if (!Contacto.validContact(pessoa, numTele, mail)) {
+                        System.out.println("Contacto invalido");
+                        break;
+                    }
                     Contacto contacto = new Contacto(pessoa, numTele, mail);
                     inst.inserirContacto(contacto);
                     break;
                 case 2:
-                    //
-                    System.out.println("Procurar contacto por:\n 1- nome\n 2 - numero");
-                    userProcurar = sc.nextInt();
+                    System.out.print("Novo numero: ");
+                    String novoNum = sc.next();
 
-                    if (userProcurar == 1) {
-                        System.out.print("Nome: ");
-                        String nomeProcurar = sc.next();
-                        List<Contacto> contactos = inst.procurarContactoNome(nomeProcurar);
-                        Contacto contactoAlterar = contactos.get(0);
-
-                        if (contactos.size() > 1) {
-                            System.out.println(contactos);
-                            System.out.print("Id do contacto a alterar: ");
-                            int idAlterar = sc.nextInt();
-                            contactoAlterar = inst.procurarContactoID(idAlterar);
-                        }
-                        // return contactoAlterar
-                        System.out.print("Novo numero: ");
-                        String novoNum = sc.next();
-
-                        contactoAlterar.setNumTelemovel(novoNum);
-
-                    } else if (userProcurar == 2) {
-                        System.out.print("Numero: ");
-                        String numProcurar = sc.next();
-                        List<Contacto> contactos = inst.procurarContactoNum(numProcurar);
-                        Contacto contactoAlterar = contactos.get(0);
-
-                        // TODO if mais do que um - igual ao de cima
-                        System.out.print("Novo numero: ");
-                        String novoNum = sc.next();
-
-                        contactoAlterar.setNumTelemovel(novoNum);
-                    }
+                    inst.procurarContacto().setNumTelemovel(novoNum);
                     break;
                 case 3:
-                    System.out.println("Procurar contacto por:\n 1- nome\n 2 - numero");
-                    userProcurar = sc.nextInt();
-
-                    if (userProcurar == 1) {
-                        System.out.print("Nome: ");
-                        String nomeProcurar = sc.next();
-                        inst.procurarContactoNome(nomeProcurar);
-
-                        System.out.print("Id do contacto a apagar: ");
-                        int idApagar = sc.nextInt();
-
-                        inst.apagarContacto(inst.procurarContactoID(idApagar));
-
-                    } else if (userProcurar == 2) {
-                        System.out.print("Numero: ");
-                        String numProcurar = sc.next();
-
-                        inst.apagarContacto(inst.procurarContactoNum(numProcurar).get(0));
-                    }
-
+                    inst.apagarContacto(inst.procurarContacto());
                     break;
                 case 4:
-                    System.out.println("Procurar contacto por:\n 1- nome\n 2 - numero");
-                    userProcurar = sc.nextInt();
-
-                    if (userProcurar == 1) {
-                        System.out.print("Nome: ");
-                        String nomeProcurar = sc.next();
-                        inst.procurarContactoNome(nomeProcurar);
-
-                    } else if (userProcurar == 2) {
-                        System.out.print("Numero: ");
-                        String numProcurar = sc.next();
-                        inst.procurarContactoNum(numProcurar);
-                    }
+                    inst.procurarContacto();
+                    System.out.println(inst.procurarContacto());
                     break;
                 case 5:
                     System.out.println(inst.toString());
