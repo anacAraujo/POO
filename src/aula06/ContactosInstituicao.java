@@ -2,6 +2,7 @@ package aula06;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ContactosInstituicao {
 
@@ -45,6 +46,43 @@ public class ContactosInstituicao {
             }
         }
         return null;
+    }
+
+    public Contacto procurarContacto() {
+        Scanner sc = new Scanner(System.in);
+        Contacto contactoAlterar = null;
+        int userProcurar;
+
+        System.out.println("Procurar contacto por:\n 1- nome\n 2 - numero");
+        userProcurar = sc.nextInt();
+
+        if (userProcurar == 1) {
+            System.out.print("Nome: ");
+            String nomeProcurar = sc.next();
+            List<Contacto> listaContactos = procurarContactoNome(nomeProcurar);
+            contactoAlterar = listaContactos.get(0);
+
+            if (listaContactos.size() > 1) {
+                System.out.println(listaContactos);
+                System.out.print("Id do contacto a alterar: ");
+                int idAlterar = sc.nextInt();
+                contactoAlterar = procurarContactoID(idAlterar);
+            }
+
+        } else if (userProcurar == 2) {
+            System.out.print("Numero: ");
+            String numProcurar = sc.next();
+            List<Contacto> listaContactos = procurarContactoNum(numProcurar);
+            contactoAlterar = listaContactos.get(0);
+
+            if (listaContactos.size() > 1) {
+                System.out.println(listaContactos);
+                System.out.print("Id do contacto a alterar: ");
+                int idAlterar = sc.nextInt();
+                contactoAlterar = procurarContactoID(idAlterar);
+            }
+        }
+        return contactoAlterar;
     }
 
     public void apagarContacto(Contacto contacto) {
