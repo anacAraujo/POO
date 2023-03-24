@@ -38,10 +38,6 @@ public class DateYMD {
         return this.year;
     }
 
-    public String toString() {
-        return this.year + "-" + this.month + "-" + this.day;
-    }
-
     private static boolean validMonth(int month) {
         if (month >= 1 && month <= 12) {
             return true;
@@ -100,4 +96,7 @@ public class DateYMD {
         }
     }
 
+    public String toString() {
+        return this.year + "-" + this.month + "-" + this.day;
+    }
 }
