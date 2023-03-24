@@ -48,6 +48,7 @@ public class ContactosInstituicao {
         return null;
     }
 
+    // TODO corrigir
     public Contacto procurarContacto() {
         Scanner sc = new Scanner(System.in);
         Contacto contactoAlterar = null;
@@ -82,7 +83,9 @@ public class ContactosInstituicao {
                 contactoAlterar = procurarContactoID(idAlterar);
             }
         }
+        sc.close();
         return contactoAlterar;
+
     }
 
     public void apagarContacto(Contacto contacto) {
