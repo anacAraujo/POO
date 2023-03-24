@@ -1,7 +1,5 @@
 package aula06;
 
-import aula05.DateYMD;
-
 public class Bolseiro extends Aluno {
     private Professor orientador;
     private int montante;
