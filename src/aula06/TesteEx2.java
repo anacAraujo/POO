@@ -1,7 +1,5 @@
 package aula06;
 
-import java.util.Scanner;
-
 public class TesteEx2 {
     public static void main(String[] args) {
         ContactosInstituicao inst = new ContactosInstituicao();
