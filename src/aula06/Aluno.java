@@ -2,8 +2,6 @@ package aula06;
 
 import java.time.LocalDate;
 
-import aula05.DateYMD;
-
 public class Aluno extends Pessoa {
     private static int currentMec = 100;
 
