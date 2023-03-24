@@ -18,7 +18,7 @@ public class ContactosInstituicao {
         this.contactos.add(contacto);
     }
 
-    public List<Contacto> procurarContactoNum(String num) {
+    private List<Contacto> procurarContactoNum(String num) {
         List<Contacto> result = new ArrayList<>();
         for (Contacto contacto : contactos) {
             if (contacto.getNumTelemovel() == num) {
@@ -28,7 +28,7 @@ public class ContactosInstituicao {
         return result;
     }
 
-    public List<Contacto> procurarContactoNome(String nome) {
+    private List<Contacto> procurarContactoNome(String nome) {
         List<Contacto> result = new ArrayList<>();
         for (Contacto contacto : contactos) {
             Pessoa pessoa = contacto.getPessoa();
@@ -39,7 +39,7 @@ public class ContactosInstituicao {
         return result;
     }
 
-    public Contacto procurarContactoID(int id) {
+    private Contacto procurarContactoID(int id) {
         for (Contacto contacto : contactos) {
             if (contacto.getId() == id) {
                 return contacto;
