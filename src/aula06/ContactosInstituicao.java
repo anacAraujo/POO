@@ -2,7 +2,6 @@ package aula06;
 
 import java.util.ArrayList;
 import java.util.List;
-import aula05.DateYMD;
 
 public class ContactosInstituicao {
 
@@ -12,23 +11,24 @@ public class ContactosInstituicao {
         this.contactos = new ArrayList<Contacto>();
     }
 
+    // TODO passar elementos contacto e vaidar - retornar false se não for valido e
+    // no menu apresentar a mensagem
     public void inserirContacto(Contacto contacto) {
         this.contactos.add(contacto);
     }
 
-    public Contacto procurarContactoNum(String num) {
+    public List<Contacto> procurarContactoNum(String num) {
+        List<Contacto> result = new ArrayList<>();
         for (Contacto contacto : contactos) {
             if (contacto.getNumTelemovel() == num) {
-                return contacto;
+                result.add(contacto);
             }
         }
-        System.out.println("Contacto não existe.");
-        return null;
+        return result;
     }
 
     public List<Contacto> procurarContactoNome(String nome) {
         List<Contacto> result = new ArrayList<>();
-
         for (Contacto contacto : contactos) {
             Pessoa pessoa = contacto.getPessoa();
             if (pessoa.getName() == nome) {
@@ -44,29 +44,12 @@ public class ContactosInstituicao {
                 return contacto;
             }
         }
-        System.out.println("Id invalido.");
         return null;
     }
 
     public void apagarContacto(Contacto contacto) {
         this.contactos.remove(contacto);
     }
-
-    public void alterarContactonum(Contacto contacto, String num) {
-        for (Contacto contacto2 : contactos) {
-            if (contacto2.equals(contacto)) {
-                contacto.setNumTelemovel(num);
-            }
-        }
-    }
-
-    // public void alterarContactoEmail(Contacto contacto, String email) {
-    // for (Contacto contacto2 : contactos) {
-    // if (contacto2.equals(contacto)) {
-    // contacto.setEmail(email);
-    // }
-    // }
-    // }
 
     public boolean verificarPessoaRepetida(Pessoa pessoa) {
         for (Contacto contacto : contactos) {
@@ -85,5 +68,4 @@ public class ContactosInstituicao {
         }
         return result;
     }
-
 }
