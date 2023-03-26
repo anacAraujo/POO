@@ -12,13 +12,11 @@ public class ContactosInstituicao {
         this.contactos = new ArrayList<Contacto>();
     }
 
-    // TODO passar elementos contacto e vaidar - retornar false se não for valido e
-    // no menu apresentar a mensagem
     public void inserirContacto(Contacto contacto) {
         this.contactos.add(contacto);
     }
 
-    private List<Contacto> procurarContactoNum(String num) {
+    public List<Contacto> procurarContactoNum(String num) {
         List<Contacto> result = new ArrayList<>();
         for (Contacto contacto : contactos) {
             if (contacto.getNumTelemovel() == num) {
@@ -28,7 +26,7 @@ public class ContactosInstituicao {
         return result;
     }
 
-    private List<Contacto> procurarContactoNome(String nome) {
+    public List<Contacto> procurarContactoNome(String nome) {
         List<Contacto> result = new ArrayList<>();
         for (Contacto contacto : contactos) {
             Pessoa pessoa = contacto.getPessoa();
@@ -39,53 +37,13 @@ public class ContactosInstituicao {
         return result;
     }
 
-    private Contacto procurarContactoID(int id) {
+    public Contacto procurarContactoID(int id) {
         for (Contacto contacto : contactos) {
             if (contacto.getId() == id) {
                 return contacto;
             }
         }
         return null;
-    }
-
-    // TODO corrigir
-    public Contacto procurarContacto() {
-        Scanner sc = new Scanner(System.in);
-        Contacto contactoAlterar = null;
-        int userProcurar;
-
-        System.out.println("Procurar contacto por:\n 1- nome\n 2 - numero");
-        userProcurar = sc.nextInt();
-
-        if (userProcurar == 1) {
-            System.out.print("Nome: ");
-            String nomeProcurar = sc.next();
-            List<Contacto> listaContactos = procurarContactoNome(nomeProcurar);
-            contactoAlterar = listaContactos.get(0);
-
-            if (listaContactos.size() > 1) {
-                System.out.println(listaContactos);
-                System.out.print("Id do contacto a alterar: ");
-                int idAlterar = sc.nextInt();
-                contactoAlterar = procurarContactoID(idAlterar);
-            }
-
-        } else if (userProcurar == 2) {
-            System.out.print("Numero: ");
-            String numProcurar = sc.next();
-            List<Contacto> listaContactos = procurarContactoNum(numProcurar);
-            contactoAlterar = listaContactos.get(0);
-
-            if (listaContactos.size() > 1) {
-                System.out.println(listaContactos);
-                System.out.print("Id do contacto a alterar: ");
-                int idAlterar = sc.nextInt();
-                contactoAlterar = procurarContactoID(idAlterar);
-            }
-        }
-        sc.close();
-        return contactoAlterar;
-
     }
 
     public void apagarContacto(Contacto contacto) {
