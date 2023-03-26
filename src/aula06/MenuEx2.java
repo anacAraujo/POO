@@ -1,8 +1,49 @@
 package aula06;
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuEx2 {
+    public static Contacto procurarContacto(ContactosInstituicao inst) {
+        Scanner sc = new Scanner(System.in);
+        Contacto contactoAlterar = null;
+        int userProcurar;
+
+        System.out.println("Procurar contacto por:\n 1- nome\n 2 - numero");
+        userProcurar = sc.nextInt();
+
+        if (userProcurar == 1) {
+            System.out.print("Nome: ");
+            String nomeProcurar = sc.next();
+            List<Contacto> listaContactos = inst.procurarContactoNome(nomeProcurar);
+            contactoAlterar = listaContactos.get(0);
+
+            if (listaContactos.size() > 1) {
+                System.out.println(listaContactos);
+                System.out.print("Id do contacto a alterar: ");
+                int idAlterar = sc.nextInt();
+                contactoAlterar = inst.procurarContactoID(idAlterar);
+            }
+
+        } else if (userProcurar == 2) {
+            System.out.print("Numero: ");
+            String numProcurar = sc.next();
+            List<Contacto> listaContactos = inst.procurarContactoNum(numProcurar);
+            contactoAlterar = listaContactos.get(0);
+
+            if (listaContactos.size() > 1) {
+                System.out.println(listaContactos);
+                System.out.print("Id do contacto a alterar: ");
+                int idAlterar = sc.nextInt();
+                contactoAlterar = inst.procurarContactoID(idAlterar);
+            }
+        }
+        sc.close();
+        return contactoAlterar;
+
+    }
+
     public static void main(String[] args) {
         ContactosInstituicao inst = new ContactosInstituicao();
 
@@ -78,14 +119,14 @@ public class MenuEx2 {
                     System.out.print("Novo numero: ");
                     String novoNum = sc.next();
 
-                    inst.procurarContacto().setNumTelemovel(novoNum);
+                    procurarContacto(inst).setNumTelemovel(novoNum);
                     break;
                 case 3:
-                    inst.apagarContacto(inst.procurarContacto());
+                    inst.apagarContacto(procurarContacto(inst));
                     break;
                 case 4:
-                    inst.procurarContacto();
-                    System.out.println(inst.procurarContacto());
+                    procurarContacto(inst);
+                    System.out.println(procurarContacto(inst));
                     break;
                 case 5:
                     System.out.println(inst.toString());
