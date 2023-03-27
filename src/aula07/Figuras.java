@@ -57,7 +57,7 @@ public class Figuras {
                     int lado3User = sc.nextInt();
                     System.out.print("Cor: ");
                     String corT = sc.next();
-                    triangulos[numTriangulos] = new Triangulo(lado1User, lado2User, lado3User);
+                    triangulos[numTriangulos] = new Triangulo(lado1User, lado2User, lado3User, corT);
                     numTriangulos++;
                     break;
                 case 3:

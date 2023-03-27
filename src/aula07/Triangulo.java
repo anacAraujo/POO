@@ -1,11 +1,11 @@
 package aula07;
 
-class Triangulo {
+class Triangulo extends Forma {
     private int lado1;
     private int lado2;
     private int lado3;
 
-    public Triangulo(int l1, int l2, int l3) {
+    public Triangulo(int l1, int l2, int l3, String cor) {
         if (l1 + l2 < l3 || l2 + l3 < l1 || l3 + l1 < l2 || l1 <= 0 || l2 <= 0 || l3 <= 0) {
             System.out.println("Lados do triangulo invalidos.");
             return;
@@ -13,6 +13,7 @@ class Triangulo {
         this.lado1 = l1;
         this.lado2 = l2;
         this.lado3 = l3;
+        this.cor = cor;
     }
 
     public int getLado1() {
@@ -60,13 +61,27 @@ class Triangulo {
         this.lado3 = valorLado3;
     }
 
-    public String toString() {
-        return "triangulo de lados: " + lado1 + ", " + lado2 + ", " + lado3;
+    public double area() {
+        double area = (lado1 + lado2 + lado3) / 2.0d;
+        return Math.sqrt(area * (area - lado1) * (area - lado2) * (area - lado3));
+    }
+
+    public double perimetro() {
+        return (this.lado1 + this.lado2 + this.lado3);
     }
 
     // Triangulos com lados iguais mas por ordem diferente são considerados iguais
-    public boolean equals(Triangulo outroTriangulo) {
-        if (this.lado1 == outroTriangulo.lado1) {
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Triangulo)) {
+            return false;
+        }
+
+        Triangulo outroTriangulo = (Triangulo) obj;
+
+        if (!super.equals(obj)) {
+            return false;
+        } else if (this.lado1 == outroTriangulo.lado1) {
             if (this.lado2 == outroTriangulo.lado2) {
                 return true;
             } else if (this.lado2 == outroTriangulo.lado3) {
@@ -88,13 +103,12 @@ class Triangulo {
         return false;
     }
 
-    public double area() {
-        double area = (lado1 + lado2 + lado3) / 2.0d;
-        return Math.sqrt(area * (area - lado1) * (area - lado2) * (area - lado3));
+    @Override
+    public String toString() {
+        return String.format("triangulo de lados:%d, %d e %d; %s",
+                this.lado1,
+                this.lado2,
+                this.lado3,
+                super.toString());
     }
-
-    public int perimetro() {
-        return (this.lado1 + this.lado2 + this.lado3);
-    }
-
 }
