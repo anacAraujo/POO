@@ -1,7 +1,6 @@
 package aula06;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuEx2 {
@@ -17,6 +16,11 @@ public class MenuEx2 {
             System.out.print("Nome: ");
             String nomeProcurar = sc.next();
             List<Contacto> listaContactos = inst.procurarContactoNome(nomeProcurar);
+            if (listaContactos.get(0) == null) {
+                System.out.println("nao existem conatctos.");
+                sc.close();
+                return null;
+            }
             contactoAlterar = listaContactos.get(0);
 
             if (listaContactos.size() > 1) {
@@ -30,6 +34,11 @@ public class MenuEx2 {
             System.out.print("Numero: ");
             String numProcurar = sc.next();
             List<Contacto> listaContactos = inst.procurarContactoNum(numProcurar);
+            if (listaContactos.get(0) == null) {
+                System.out.println("nao existem conatctos.");
+                sc.close();
+                return null;
+            }
             contactoAlterar = listaContactos.get(0);
 
             if (listaContactos.size() > 1) {
