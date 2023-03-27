@@ -1,16 +1,17 @@
 package aula07;
 
-class Retangulo {
+class Retangulo extends Forma {
     private int comprimento;
     private int largura;
 
-    public Retangulo(int c, int l) {
+    public Retangulo(int c, int l, String cor) {
         if (c <= 0 || l <= 0) {
             System.out.println("Insira um valor maior que zero.");
             return;
         }
         this.comprimento = c;
         this.largura = l;
+        this.cor = cor;
     }
 
     public int getComprimento() {
@@ -37,22 +38,35 @@ class Retangulo {
         this.largura = largura;
     }
 
-    public String toString() {
-        return "retangulo de comprimento: " + comprimento + " e largura: " + largura;
+    @Override
+    public double area() {
+        return (this.comprimento * this.largura);
     }
 
-    public boolean equals(Retangulo outroRetangulo) {
-        if (this.comprimento == outroRetangulo.comprimento && this.largura == outroRetangulo.largura) {
+    @Override
+    public double perimetro() {
+        return 2 * (this.comprimento + this.largura);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Retangulo)) {
+            return false;
+        }
+
+        Retangulo outroRetangulo = (Retangulo) obj;
+        if (this.comprimento == outroRetangulo.comprimento && this.largura == outroRetangulo.largura
+                && super.equals(obj)) {
             return true;
         }
         return false;
     }
 
-    public int area() {
-        return (this.comprimento * this.largura);
-    }
-
-    public int perimetro() {
-        return 2 * (this.comprimento + this.largura);
+    @Override
+    public String toString() {
+        return String.format("Retangulo de comprimento:%d; largura:%d; cor:%s",
+                this.comprimento,
+                this.largura,
+                this.cor);
     }
 }

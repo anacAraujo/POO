@@ -44,8 +44,8 @@ public class Figuras {
                     System.out.print("Raio: ");
                     int raioUser = sc.nextInt();
                     System.out.print("Cor: ");
-                    String corUser = sc.next();
-                    circulos[numCirculos] = new Circulo(raioUser, corUser);
+                    String corC = sc.next();
+                    circulos[numCirculos] = new Circulo(raioUser, corC);
                     numCirculos++;
                     break;
                 case 2:
@@ -55,6 +55,8 @@ public class Figuras {
                     int lado2User = sc.nextInt();
                     System.out.print("Lado 3: ");
                     int lado3User = sc.nextInt();
+                    System.out.print("Cor: ");
+                    String corT = sc.next();
                     triangulos[numTriangulos] = new Triangulo(lado1User, lado2User, lado3User);
                     numTriangulos++;
                     break;
@@ -63,7 +65,9 @@ public class Figuras {
                     int compUser = sc.nextInt();
                     System.out.print("Largura: ");
                     int larguraUser = sc.nextInt();
-                    retangulos[numRetangulos] = new Retangulo(compUser, larguraUser);
+                    System.out.print("Cor: ");
+                    String corR = sc.next();
+                    retangulos[numRetangulos] = new Retangulo(compUser, larguraUser, corR);
                     numRetangulos++;
                     break;
                 case 4:
