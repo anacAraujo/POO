@@ -2,7 +2,6 @@ package aula07;
 
 class Circulo extends Forma {
     private int raio;
-    private String cor;
 
     public Circulo(int r, String cor) {
         if (r <= 0 || cor == "") {
@@ -30,9 +29,9 @@ class Circulo extends Forma {
     }
 
     public String toString() {
-        return String.format("Circulo com raio:%d; Cor:%s",
+        return String.format("Circulo com raio:%d; %s",
                 this.raio,
-                this.cor);
+                super.toString());
     }
 
     @Override
@@ -44,7 +43,7 @@ class Circulo extends Forma {
 
         Circulo outroCirculo = (Circulo) obj;
 
-        if (this.raio == outroCirculo.raio && this.cor == outroCirculo.cor) {
+        if (this.raio == outroCirculo.raio && super.equals(obj)) {
             return true;
         }
         return false;
