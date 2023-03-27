@@ -4,8 +4,10 @@ import java.util.Scanner;
 import java.util.List;
 
 public class MenuEx2 {
+
+    private static Scanner sc = new Scanner(System.in);
+
     public static Contacto procurarContacto(ContactosInstituicao inst) {
-        Scanner sc = new Scanner(System.in);
         Contacto contactoAlterar = null;
         int userProcurar;
 
@@ -17,8 +19,7 @@ public class MenuEx2 {
             String nomeProcurar = sc.next();
             List<Contacto> listaContactos = inst.procurarContactoNome(nomeProcurar);
             if (listaContactos.get(0) == null) {
-                System.out.println("nao existem conatctos.");
-                sc.close();
+                System.out.println("Contacto nao existe.");
                 return null;
             }
             contactoAlterar = listaContactos.get(0);
@@ -35,8 +36,7 @@ public class MenuEx2 {
             String numProcurar = sc.next();
             List<Contacto> listaContactos = inst.procurarContactoNum(numProcurar);
             if (listaContactos.get(0) == null) {
-                System.out.println("nao existem conatctos.");
-                sc.close();
+                System.out.println("Contacto nao existe.");
                 return null;
             }
             contactoAlterar = listaContactos.get(0);
@@ -48,15 +48,11 @@ public class MenuEx2 {
                 contactoAlterar = inst.procurarContactoID(idAlterar);
             }
         }
-        sc.close();
         return contactoAlterar;
-
     }
 
     public static void main(String[] args) {
         ContactosInstituicao inst = new ContactosInstituicao();
-
-        Scanner sc = new Scanner(System.in);
 
         int inputUser = 0;
 
@@ -128,12 +124,25 @@ public class MenuEx2 {
                     System.out.print("Novo numero: ");
                     String novoNum = sc.next();
 
-                    procurarContacto(inst).setNumTelemovel(novoNum);
+                    Contacto contactoAlterar = procurarContacto(inst);
+
+                    if (contactoAlterar == null) {
+                        break;
+                    }
+
+                    contactoAlterar.setNumTelemovel(novoNum);
                     break;
                 case 3:
-                    inst.apagarContacto(procurarContacto(inst));
+                    Contacto contactoApagar = procurarContacto(inst);
+
+                    if (contactoApagar == null) {
+                        break;
+                    }
+                    inst.apagarContacto(contactoApagar);
                     break;
                 case 4:
+                    // TODO tem de se criar a var contacto e processar o null
+                    // procuar duas vezes porque???
                     procurarContacto(inst);
                     System.out.println(procurarContacto(inst));
                     break;
