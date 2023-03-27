@@ -28,10 +28,14 @@ class Circulo extends Forma {
         this.raio = raio;
     }
 
-    public String toString() {
-        return String.format("Circulo com raio:%d; %s",
-                this.raio,
-                super.toString());
+    @Override
+    public double area() {
+        return Math.PI * Math.pow(raio, 2);
+    }
+
+    @Override
+    public double perimetro() {
+        return Math.PI * this.raio * 2.0d;
     }
 
     @Override
@@ -49,13 +53,9 @@ class Circulo extends Forma {
         return false;
     }
 
-    @Override
-    public double area() {
-        return Math.PI * Math.pow(raio, 2);
-    }
-
-    @Override
-    public double perimetro() {
-        return Math.PI * this.raio * 2.0d;
+    public String toString() {
+        return String.format("Circulo com raio:%d; %s",
+                this.raio,
+                super.toString());
     }
 }
