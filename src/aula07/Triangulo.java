@@ -61,11 +61,13 @@ class Triangulo extends Forma {
         this.lado3 = valorLado3;
     }
 
+    // TODO override
     public double area() {
         double area = (lado1 + lado2 + lado3) / 2.0d;
         return Math.sqrt(area * (area - lado1) * (area - lado2) * (area - lado3));
     }
 
+    // TODO override
     public double perimetro() {
         return (this.lado1 + this.lado2 + this.lado3);
     }
@@ -80,6 +82,7 @@ class Triangulo extends Forma {
         Triangulo outroTriangulo = (Triangulo) obj;
 
         if (!super.equals(obj)) {
+            // TODO como tem os return, não precisa de else
             return false;
         } else if (this.lado1 == outroTriangulo.lado1) {
             if (this.lado2 == outroTriangulo.lado2) {

@@ -45,6 +45,9 @@ class Circulo extends Forma {
             return false;
         }
 
+        // TODO podia checkar logo o super.equals(obj)
+        // mas está bem assim
+
         Circulo outroCirculo = (Circulo) obj;
 
         if (this.raio == outroCirculo.raio && super.equals(obj)) {

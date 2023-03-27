@@ -64,9 +64,10 @@ class Retangulo extends Forma {
 
     @Override
     public String toString() {
+        // TODO super em vez de this
         return String.format("Retangulo de comprimento:%d; largura:%d; %s",
                 this.comprimento,
                 this.largura,
-                this.toString());
+                super.toString());
     }
 }
