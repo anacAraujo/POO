@@ -20,7 +20,7 @@ class Objeto {
 
         this.posX = newX;
         this.posY = newY;
-        distPercorrida += Math.sqrt((this.posY - posAnteriorY) * (this.posY - posAnteriorY)
+        this.distPercorrida += Math.sqrt((this.posY - posAnteriorY) * (this.posY - posAnteriorY)
                 + (this.posX - posAnteriorX) * (this.posX - posAnteriorX));
     }
 
@@ -42,6 +42,18 @@ class Objeto {
 
     public int getPosY() {
         return posY;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Objeto)) {
+            return false;
+        }
+        Objeto outroObjeto = (Objeto) obj;
+        if (this.posX == outroObjeto.posX && this.posY == outroObjeto.posY) {
+            return true;
+        }
+        return false;
     }
 }
 
@@ -79,11 +91,16 @@ class Robo extends Objeto {
 
     @Override
     public String toString() {
-        return String.format("Robo: %s\nTipo: %s\nNumero de golos marcados: %d\n%s",
+        return String.format("Robo: %s; Tipo: %s; Numero de golos marcados: %d; %s\n",
                 this.id,
                 this.tipoJogador,
                 this.numGolos,
                 super.toString());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
 
@@ -97,9 +114,14 @@ class Bola extends Objeto {
 
     @Override
     public String toString() {
-        return String.format("Bola %s\n%s",
+        return String.format("Bola %s; %s",
                 this.cor,
                 super.toString());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
 
@@ -120,7 +142,7 @@ class Equipa {
         this.robos = new Robo[3];
     }
 
-    public void inserirRobos(int posX, int posY, String tipo) {
+    public void inserirRobo(int posX, int posY, String tipo) {
         if (numRobos > 3) {
             System.out.println("Cada equipa tem 3 robos.");
             return;
@@ -133,7 +155,7 @@ class Equipa {
         if (numRobos == 0) {
             return;
         }
-        for (int i = 0; i < numRobos - 1; i++) {
+        for (int i = 0; i < numRobos; i++) {
             this.golosMarcados += this.robos[i].getNumGolos();
         }
     }
@@ -141,7 +163,7 @@ class Equipa {
     @Override
     public String toString() {
         String robos = "";
-        for (int i = 0; i < numRobos - 1; i++) {
+        for (int i = 0; i < numRobos; i++) {
             robos += this.robos[i].toString();
         }
         return String.format(
@@ -201,22 +223,34 @@ class Jogo {
     // return equipa.getRobos()[posicaoRobo];
     // }
 
-    public void jogar() {
+    public boolean jogar() {
+        if (tempoDecorrido >= duracao) {
+            return false;
+        }
         int numequipa = (int) (Math.random() * 2);
         Robo robo = null;
         if (numequipa == 1) {
-            robo = equipa1.getRobos()[numequipa];
+            int numrobo = (int) (Math.random() * 2);
+            robo = equipa1.getRobos()[numrobo];
         } else if (numequipa == 0) {
-            robo = equipa2.getRobos()[numequipa];
+            int numrobo = (int) (Math.random() * 2);
+            robo = equipa2.getRobos()[numrobo];
         }
 
-        robo.move(robo.getPosX() + 10, robo.getPosY() + 10);
+        robo.move(robo.getPosX() + 5, robo.getPosY() + 1);
 
-        if (robo.getPosX() < 30 && robo.getPosX() > 20 && robo.getPosY() > 40) {
+        if (robo.getPosX() == bola.getPosX() || robo.getPosY() == bola.getPosY()) {
             robo.marcarGolo();
+
         }
-        robo.marcarGolo();
+
+        equipa1.atualizarGolos();
+        equipa2.atualizarGolos();
+        equipa1.setGolosSofridos(equipa2.getGolosMarcados());
+        equipa2.setGolosSofridos(equipa1.getGolosMarcados());
+
         tempoDecorrido++;
+        return true;
     }
 
     @Override
@@ -233,27 +267,24 @@ public class Ex03 {
     public static void main(String[] args) {
 
         Equipa equipa1 = new Equipa("AAA", "Aaa");
-        equipa1.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
-        equipa1.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "Avancado");
+        equipa1.inserirRobo((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
+        equipa1.inserirRobo((int) Math.random() * 50, (int) Math.random() * 50, "Avancado");
 
         Equipa equipa2 = new Equipa("BBB", "Bbb");
-        equipa2.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
-        equipa2.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "Avancado");
+        equipa2.inserirRobo((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
+        equipa2.inserirRobo((int) Math.random() * 50, (int) Math.random() * 50, "Avancado");
 
         Bola bola = new Bola(25, 25, "branco");
 
-        int duracao = 10;
+        int duracao = 20;
 
         Jogo jogo = new Jogo(equipa1, equipa2, bola, duracao);
 
-        while (jogo.getTempoDecorrido() != duracao) {
-            jogo.jogar();
-        }
+        boolean isPlaying = true;
 
-        equipa1.atualizarGolos();
-        equipa2.atualizarGolos();
-        equipa1.setGolosSofridos(equipa2.getGolosMarcados());
-        equipa2.setGolosSofridos(equipa1.getGolosMarcados());
+        while (isPlaying) {
+            isPlaying = jogo.jogar();
+        }
 
         System.out.println(jogo.toString());
     }
