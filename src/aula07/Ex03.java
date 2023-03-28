@@ -129,7 +129,7 @@ class Equipa {
         numRobos++;
     }
 
-    private void atualizarGolos() {
+    public void atualizarGolos() {
         if (numRobos == 0) {
             return;
         }
@@ -140,7 +140,6 @@ class Equipa {
 
     @Override
     public String toString() {
-        atualizarGolos();
         String robos = "";
         for (int i = 0; i < numRobos - 1; i++) {
             robos += this.robos[i].toString();
@@ -154,28 +153,16 @@ class Equipa {
                 robos);
     }
 
-    public String getNomeEquipa() {
-        return nomeEquipa;
-    }
-
-    public String getNomeResponsavel() {
-        return nomeResponsavel;
+    public Robo[] getRobos() {
+        return robos;
     }
 
     public int getGolosMarcados() {
         return golosMarcados;
     }
 
-    public int getGolosSofridos() {
-        return golosSofridos;
-    }
-
-    public Robo[] getRobos() {
-        return robos;
-    }
-
-    public int getNumRobos() {
-        return numRobos;
+    public void setGolosSofridos(int golosSofridos) {
+        this.golosSofridos = golosSofridos;
     }
 }
 
@@ -214,7 +201,7 @@ class Jogo {
     // return equipa.getRobos()[posicaoRobo];
     // }
 
-    private void jogada() {
+    public void jogar() {
         int numequipa = (int) (Math.random() * 2);
         Robo robo = null;
         if (numequipa == 1) {
@@ -228,20 +215,17 @@ class Jogo {
         if (robo.getPosX() < 30 && robo.getPosX() > 20 && robo.getPosY() > 40) {
             robo.marcarGolo();
         }
-
+        robo.marcarGolo();
         tempoDecorrido++;
-    }
-
-    public void jogar() {
-        while (tempoDecorrido != duracao) {
-            jogada();
-        }
-        System.out.println(toString());
     }
 
     @Override
     public String toString() {
         return String.format("Equipas:\n%s\n%s", this.equipa1.toString(), this.equipa2.toString());
+    }
+
+    public int getTempoDecorrido() {
+        return tempoDecorrido;
     }
 }
 
@@ -251,7 +235,6 @@ public class Ex03 {
         Equipa equipa1 = new Equipa("AAA", "Aaa");
         equipa1.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
         equipa1.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "Avancado");
-        System.out.println(equipa1.toString());
 
         Equipa equipa2 = new Equipa("BBB", "Bbb");
         equipa2.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
@@ -263,6 +246,15 @@ public class Ex03 {
 
         Jogo jogo = new Jogo(equipa1, equipa2, bola, duracao);
 
-        jogo.jogar();
+        while (jogo.getTempoDecorrido() != duracao) {
+            jogo.jogar();
+        }
+
+        equipa1.atualizarGolos();
+        equipa2.atualizarGolos();
+        equipa1.setGolosSofridos(equipa2.getGolosMarcados());
+        equipa2.setGolosSofridos(equipa1.getGolosMarcados());
+
+        System.out.println(jogo.toString());
     }
 }
