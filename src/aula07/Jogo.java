@@ -66,7 +66,7 @@ class Robo extends Objeto {
 
     @Override
     public String toString() {
-        return String.format("Robo: %s\nTipo: %s\nNumero de golos marcados: %d\n%s",
+        return String.format("%s\nTipo: %s\nNumero de golos marcados: %d\n%s",
                 this.id,
                 this.tipoJogador,
                 this.numGolos,
