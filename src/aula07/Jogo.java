@@ -1,5 +1,6 @@
 package aula07;
 
+import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -143,5 +144,24 @@ class Equipa {
 }
 
 public class Jogo {
+    public static void main(String[] args) {
 
+        for (int i = 0; i < 2; i++) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Cria a primeira equipa:\nNome da esquipa: ");
+            String nomeEquipa = sc.next();
+            System.out.print("Nome do responsavel: ");
+            String responsavel = sc.next();
+            new Equipa(nomeEquipa, responsavel);
+        }
+
+        int duracaoTotal = 10000;
+        long duracaoAtual = System.currentTimeMillis();
+        long finish = duracaoAtual + duracaoTotal;
+
+        while (duracaoAtual != finish) {
+            System.out.println("Ação:");
+            duracaoAtual = System.currentTimeMillis();
+        }
+    }
 }
