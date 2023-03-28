@@ -28,9 +28,10 @@ class Objeto {
 
     @Override
     public String toString() {
-        return String.format("Posição x:%d; y:%d; ",
+        return String.format("Posição x:%d; y:%d;\nDistancia percorrida: %d",
                 this.posX,
-                this.posY);
+                this.posY,
+                distPercorrida);
     }
 }
 
@@ -43,7 +44,6 @@ class Robo extends Objeto {
 
     public Robo(String id, int posX, int posY, String tipo) {
         super(posX, posY);
-
         if (categorias.indexOf(tipo) == -1) {
             System.out.println("Tipo de jogador invalido.");
             return;
