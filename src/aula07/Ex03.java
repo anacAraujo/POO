@@ -31,6 +31,18 @@ class Objeto {
                 this.posY,
                 this.distPercorrida);
     }
+
+    public int getDistPercorrida() {
+        return distPercorrida;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
 }
 
 class Robo extends Objeto {
@@ -113,26 +125,57 @@ class Equipa {
             System.out.println("Cada equipa tem 3 robos.");
             return;
         }
-        robos[numRobos] = new Robo(posX, posY, tipo);
+        this.robos[numRobos] = new Robo(posX, posY, tipo);
         numRobos++;
     }
 
     private void atualizarGolos() {
-        for (Robo robo : robos) {
-            this.golosMarcados += robo.getNumGolos();
+        if (numRobos == 0) {
+            return;
+        }
+        for (int i = 0; i < numRobos - 1; i++) {
+            this.golosMarcados += this.robos[i].getNumGolos();
         }
     }
 
     @Override
     public String toString() {
         atualizarGolos();
+        String robos = "";
+        for (int i = 0; i < numRobos - 1; i++) {
+            robos += this.robos[i].toString();
+        }
         return String.format(
                 "Equipa %s\nResponsavel: %s\nTotal de golos marcados: %d\nTotal de golos sofridos: %d\nRobos:\n%s",
                 this.nomeEquipa,
                 this.nomeResponsavel,
                 this.golosMarcados,
                 this.golosSofridos,
-                this.robos.toString());
+                robos);
+    }
+
+    public String getNomeEquipa() {
+        return nomeEquipa;
+    }
+
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
+    }
+
+    public int getGolosMarcados() {
+        return golosMarcados;
+    }
+
+    public int getGolosSofridos() {
+        return golosSofridos;
+    }
+
+    public Robo[] getRobos() {
+        return robos;
+    }
+
+    public int getNumRobos() {
+        return numRobos;
     }
 }
 
@@ -150,8 +193,76 @@ class Jogo {
         this.duracao = duracao;
     }
 
+    // private Robo roboMaisProximoBola(Equipa equipa) {
+    // int distMin = 10000;
+    // int posicaoRobo = -1;
+
+    // for (int i = 0; i < equipa.getNumRobos(); i++) {
+    // int x1 = equipa.getRobos()[i].getPosX();
+    // int y1 = equipa.getRobos()[i].getPosY();
+
+    // int x2 = bola.getPosX();
+    // int y2 = bola.getPosY();
+
+    // int dist = (int) Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
+
+    // if (dist < distMin) {
+    // distMin = dist;
+    // posicaoRobo = i;
+    // }
+    // }
+    // return equipa.getRobos()[posicaoRobo];
+    // }
+
+    private void jogada() {
+        int numequipa = (int) (Math.random() * 2);
+        Robo robo = null;
+        if (numequipa == 1) {
+            robo = equipa1.getRobos()[numequipa];
+        } else if (numequipa == 0) {
+            robo = equipa2.getRobos()[numequipa];
+        }
+
+        robo.move(robo.getPosX() + 10, robo.getPosY() + 10);
+
+        if (robo.getPosX() < 30 && robo.getPosX() > 20 && robo.getPosY() > 40) {
+            robo.marcarGolo();
+        }
+
+        tempoDecorrido++;
+    }
+
+    public void jogar() {
+        while (tempoDecorrido != duracao) {
+            jogada();
+        }
+        System.out.println(toString());
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Equipas:\n%s\n%s", this.equipa1.toString(), this.equipa2.toString());
+    }
 }
 
 public class Ex03 {
+    public static void main(String[] args) {
 
+        Equipa equipa1 = new Equipa("AAA", "Aaa");
+        equipa1.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
+        equipa1.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "Avancado");
+        System.out.println(equipa1.toString());
+
+        Equipa equipa2 = new Equipa("BBB", "Bbb");
+        equipa2.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "GuardaRedes");
+        equipa2.inserirRobos((int) Math.random() * 50, (int) Math.random() * 50, "Avancado");
+
+        Bola bola = new Bola(25, 25, "branco");
+
+        int duracao = 10;
+
+        Jogo jogo = new Jogo(equipa1, equipa2, bola, duracao);
+
+        jogo.jogar();
+    }
 }
