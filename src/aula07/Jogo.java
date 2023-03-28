@@ -1,9 +1,7 @@
 package aula07;
 
-import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 class Objeto {
     private static int distPercorrida = 0;
@@ -11,7 +9,9 @@ class Objeto {
     private int posX;
     private int posY;
 
-    public Objeto(int posX, int posY) {
+    public Objeto() {
+        int posX = (int) Math.floor(Math.random() * (50));
+        int posY = (int) Math.floor(Math.random() * (50));
         this.posX = posX;
         this.posY = posY;
     }
@@ -37,19 +37,18 @@ class Objeto {
 
 class Robo extends Objeto {
     private static List<String> categorias = Arrays.asList("GuardaRedes", "Avancado", "Defesa", "Medio");
+    private static int currentId = 0;
 
     private String id;
     private String tipoJogador;
     private int numGolos;
 
-    public Robo(String id, int posX, int posY, String tipo) {
-        super(posX, posY);
-        if (categorias.indexOf(tipo) == -1) {
-            System.out.println("Tipo de jogador invalido.");
-            return;
-        }
-        this.tipoJogador = tipo;
-        this.id = id;
+    public Robo() {
+        super();
+        int tipo = (int) Math.floor(Math.random() * (5));
+        this.tipoJogador = categorias.get(tipo);
+        this.id = "Robo" + currentId;
+        currentId++;
         numGolos = 0;
     }
 
@@ -79,7 +78,7 @@ class Bola extends Objeto {
     private String cor;
 
     public Bola(int posX, int posY, String cor) {
-        super(posX, posY);
+        super();
         this.cor = cor;
     }
 
@@ -92,17 +91,16 @@ class Bola extends Objeto {
 }
 
 class Equipa {
-    private static Scanner sc = new Scanner(System.in);
-
     private String nomeEquipa;
     private String nomeResponsavel;
     private int golosMarcados;
     private int golosSofridos;
     private Robo[] robos;
 
-    public Equipa(String nomeEquipa, String nomeResponsavel) {
-        this.nomeEquipa = nomeEquipa;
-        this.nomeResponsavel = nomeResponsavel;
+    public Equipa() {
+        int nome = (int) Math.floor(Math.random() * (100));
+        this.nomeEquipa = "Equipa" + nome;
+        this.nomeResponsavel = "Responsavel" + nome;
         this.golosMarcados = 0;
         this.golosSofridos = 0;
         this.robos = new Robo[3];
@@ -111,16 +109,7 @@ class Equipa {
 
     private void adicionarRobos() {
         for (int i = 0; i < robos.length; i++) {
-            System.out.print("ID do robô: ");
-            String id = sc.next();
-            System.out.print("Posição x: ");
-            int posX = sc.nextInt();
-            System.out.print("Posição Y: ");
-            int posY = sc.nextInt();
-            System.out.print("Tipo: ");
-            String tipo = sc.next();
-
-            robos[i] = new Robo(id, posX, posY, tipo);
+            robos[i] = new Robo();
         }
     }
 
@@ -144,24 +133,5 @@ class Equipa {
 }
 
 public class Jogo {
-    public static void main(String[] args) {
 
-        for (int i = 0; i < 2; i++) {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Cria a primeira equipa:\nNome da esquipa: ");
-            String nomeEquipa = sc.next();
-            System.out.print("Nome do responsavel: ");
-            String responsavel = sc.next();
-            new Equipa(nomeEquipa, responsavel);
-        }
-
-        int duracaoTotal = 10000;
-        long duracaoAtual = System.currentTimeMillis();
-        long finish = duracaoAtual + duracaoTotal;
-
-        while (duracaoAtual != finish) {
-            System.out.println("Ação:");
-            duracaoAtual = System.currentTimeMillis();
-        }
-    }
 }
