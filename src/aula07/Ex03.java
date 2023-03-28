@@ -97,21 +97,24 @@ class Equipa {
     private int golosMarcados;
     private int golosSofridos;
     private Robo[] robos;
+    private int numRobos;
 
-    public Equipa(String nomeEquipa, String nomeResponsavel, int posX, int posY, String tipo) {
+    public Equipa(String nomeEquipa, String nomeResponsavel) {
         this.nomeEquipa = nomeEquipa;
         this.nomeResponsavel = nomeResponsavel;
         this.golosMarcados = 0;
         this.golosSofridos = 0;
+        this.numRobos = 0;
         this.robos = new Robo[3];
-
-        inserirRobos(posX, posY, tipo);
     }
 
-    private void inserirRobos(int posX, int posY, String tipo) {
-        for (int i = 0; i < robos.length; i++) {
-            robos[i] = new Robo(posX, posY, tipo);
+    public void inserirRobos(int posX, int posY, String tipo) {
+        if (numRobos > 3) {
+            System.out.println("Cada equipa tem 3 robos.");
+            return;
         }
+        robos[numRobos] = new Robo(posX, posY, tipo);
+        numRobos++;
     }
 
     private void atualizarGolos() {
@@ -134,6 +137,18 @@ class Equipa {
 }
 
 class Jogo {
+    private Equipa equipa1;
+    private Equipa equipa2;
+    private Bola bola;
+    private int duracao;
+    private int tempoDecorrido;
+
+    public Jogo(Equipa equipa1, Equipa equipa2, Bola bola, int duracao) {
+        this.equipa1 = equipa1;
+        this.equipa2 = equipa2;
+        this.bola = bola;
+        this.duracao = duracao;
+    }
 
 }
 
