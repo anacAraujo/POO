@@ -85,8 +85,9 @@ class Bola extends Objeto {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return String.format("Bola %s\n%s",
+                this.cor,
+                super.toString());
     }
 }
 
@@ -123,12 +124,22 @@ class Equipa {
         }
     }
 
-    public void atualizarGolos() {
-        // se o ide do robo marcar um golo adicionar aos golos marcados
-        // se não adicionar aos sofridos
+    private void atualizarGolos() {
         for (Robo robo : robos) {
             this.golosMarcados += robo.getNumGolos();
         }
+    }
+
+    @Override
+    public String toString() {
+        atualizarGolos();
+        return String.format(
+                "Equipa %s\nResponsavel: %s\nTotal de golos marcados: %d\nTotal de golos sofridos: %d\nRobos:\n%s",
+                this.nomeEquipa,
+                this.nomeResponsavel,
+                this.golosMarcados,
+                this.golosSofridos,
+                this.robos.toString());
     }
 }
 
