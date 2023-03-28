@@ -1,9 +1,7 @@
 package aula07;
 
-import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 class Objeto {
     private int distPercorrida;
