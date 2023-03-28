@@ -25,6 +25,13 @@ class Objeto {
         Objeto.distPercorrida += Math.sqrt((this.posY - posAnteriorY) * (this.posY - posAnteriorY)
                 + (this.posX - posAnteriorX) * (this.posX - posAnteriorX));
     }
+
+    @Override
+    public String toString() {
+        return String.format("Posição x:%d; y:%d; ",
+                this.posX,
+                this.posY);
+    }
 }
 
 class Robo extends Objeto {
@@ -49,6 +56,23 @@ class Robo extends Objeto {
     public void marcarGolo() {
         numGolos++;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getNumGolos() {
+        return numGolos;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Robo: %s\nTipo: %s\nNumero de golos marcados: %d\n%s",
+                this.id,
+                this.tipoJogador,
+                this.numGolos,
+                super.toString());
+    }
 }
 
 class Bola extends Objeto {
@@ -57,6 +81,12 @@ class Bola extends Objeto {
     public Bola(int posX, int posY, String cor) {
         super(posX, posY);
         this.cor = cor;
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
     }
 }
 
@@ -90,6 +120,14 @@ class Equipa {
             String tipo = sc.next();
 
             robos[i] = new Robo(id, posX, posY, tipo);
+        }
+    }
+
+    public void atualizarGolos() {
+        // se o ide do robo marcar um golo adicionar aos golos marcados
+        // se não adicionar aos sofridos
+        for (Robo robo : robos) {
+            this.golosMarcados += robo.getNumGolos();
         }
     }
 }
