@@ -29,7 +29,7 @@ class Objeto {
         return String.format("Posição x:%d; y:%d;\nDistancia percorrida: %d",
                 this.posX,
                 this.posY,
-                distPercorrida);
+                this.distPercorrida);
     }
 }
 
@@ -50,7 +50,7 @@ class Robo extends Objeto {
         this.tipoJogador = tipo;
         this.id = "Robo" + currentID;
         currentID++;
-        numGolos = 0;
+        this.numGolos = 0;
     }
 
     public void marcarGolo() {
@@ -105,6 +105,10 @@ class Equipa {
         this.golosSofridos = 0;
         this.robos = new Robo[3];
 
+        inserirRobos(posX, posY, tipo);
+    }
+
+    private void inserirRobos(int posX, int posY, String tipo) {
         for (int i = 0; i < robos.length; i++) {
             robos[i] = new Robo(posX, posY, tipo);
         }
