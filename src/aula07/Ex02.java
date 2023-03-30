@@ -15,7 +15,7 @@ public class Ex02 {
 
         do {
             System.out.println(
-                    "Date operations:\n1 - create new date\n2 - show current date\n3 - increment date\n4 - decrement date\n0 - exit");
+                    "Date operations:\n1 - create new date\n2 - show current date\n3 - increment date\n4 - decrement date\n5 - how many days away to 2000\n0 - exit");
             userOption = sc.nextInt();
             switch (userOption) {
                 case 1:
@@ -58,6 +58,15 @@ public class Ex02 {
                         break;
                     }
                     userDateYMD.decrement();
+                    break;
+                case 5:
+                    if (userDateYMD == null) {
+                        System.out.println("Enter a valid date first.");
+                        break;
+                    }
+                    DateND count = new DateND(userDateYMD);
+                    count.countND();
+                    System.out.println(count.toString());
                     break;
                 default:
                     break;
