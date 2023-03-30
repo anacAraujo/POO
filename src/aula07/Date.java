@@ -36,7 +36,7 @@ public abstract class Date {
     }
 
     public String toString(int day, int month, int year) {
-        return String.format("%d - %d - %d",
+        return String.format("%d-%d-%d",
                 day,
                 month,
                 year);
