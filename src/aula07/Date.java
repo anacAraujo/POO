@@ -35,8 +35,10 @@ public abstract class Date {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public String toString(int day, int month, int year) {
+        return String.format("%d - %d - %d",
+                day,
+                month,
+                year);
     }
 }
