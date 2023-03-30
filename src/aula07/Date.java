@@ -1,7 +1,6 @@
 package aula07;
 
 public abstract class Date {
-
     public static boolean validMonth(int month) {
         if (month >= 1 && month <= 12) {
             return true;
@@ -34,5 +33,10 @@ public abstract class Date {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
