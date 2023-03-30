@@ -1,9 +1,6 @@
 package aula07;
 
 public abstract class Date {
-    public abstract void increment();
-
-    public abstract void decrement();
 
     public static boolean validMonth(int month) {
         if (month >= 1 && month <= 12) {
