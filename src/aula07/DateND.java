@@ -48,4 +48,11 @@ public class DateND extends Date {
         return this.nDays;
 
     }
+
+    @Override
+    public String toString() {
+        return String.format("Em relação ao dia 1-1-2000, o dia %s fica a %d dias.",
+                super.toString(data.getDay(), data.getMonth(), data.getYear()),
+                this.nDays);
+    }
 }
