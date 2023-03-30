@@ -15,6 +15,13 @@ public class DateND extends Date {
         this.data = new DateYMD(dataUser.getDay(), dataUser.getMonth(), dataUser.getYear());
     }
 
+    private void countDaysMonth(int year) {
+        for (int j = 1; j <= 12; j++) {
+            this.nDays += monthDays(j, year);
+            System.out.println(j);
+        }
+    }
+
     public int countND() {
         int totalYears;
 
@@ -22,27 +29,21 @@ public class DateND extends Date {
             totalYears = data.getYear() - firstDay.getYear() - 1;
 
             for (int i = 0; i < totalYears; i++) {
-                this.nDays += leapYear(firstDay.getYear() + i) ? 366 : 365;
-
-                for (int j = 1; j <= 12; j++) {
-                    this.nDays += monthDays(j, firstDay.getYear() + i);
-                }
+                int currentYear = firstDay.getYear() + i;
+                this.nDays += leapYear(currentYear) ? 366 : 365;
+                countDaysMonth(currentYear);
             }
 
         } else if (data.getYear() < firstDay.getYear()) {
             totalYears = firstDay.getYear() - data.getYear() - 1;
 
             for (int i = 0; i < totalYears; i++) {
-                this.nDays += leapYear(firstDay.getYear() - i) ? 366 : 365;
-
-                for (int j = 1; j <= 12; j++) {
-                    this.nDays += monthDays(j, firstDay.getYear() + i);
-                }
+                int currentYear = firstDay.getYear() - i;
+                this.nDays += leapYear(currentYear) ? 366 : 365;
+                countDaysMonth(currentYear);
             }
         } else if (data.getYear() == firstDay.getYear()) {
-            for (int j = 1; j <= 12; j++) {
-                this.nDays += monthDays(j, firstDay.getYear());
-            }
+            countDaysMonth(data.getYear());
         }
 
         if (data.getMonth() > 1) {
