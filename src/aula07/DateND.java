@@ -6,13 +6,13 @@ public class DateND extends Date {
     private int nDays;
     private DateYMD data;
 
-    public DateND(DateYMD data) {
-        if (!valid(data.getDay(), data.getMonth(), data.getYear())) {
+    public DateND(DateYMD dataUser) {
+        if (!valid(dataUser.getDay(), dataUser.getMonth(), dataUser.getYear())) {
             System.out.println("Invalid date.");
             return;
         }
         this.nDays = 0;
-        this.data.setDate(data.getDay(), data.getMonth(), data.getYear());
+        this.data = new DateYMD(dataUser.getDay(), dataUser.getMonth(), dataUser.getYear());
     }
 
     public int countND() {
@@ -21,29 +21,29 @@ public class DateND extends Date {
         if (data.getYear() > firstDay.getYear()) {
             totalYears = data.getYear() - firstDay.getYear();
 
-            for (int i = 0; i < totalYears; i++) {
+            for (int i = 1; i < totalYears; i++) {
                 this.nDays += leapYear(firstDay.getYear() + i) ? 366 : 365;
 
-                for (int j = 0; j < data.getMonth(); j++) {
+                for (int j = 1; j < data.getMonth(); j++) {
                     this.nDays += monthDays(firstDay.getMonth() + j, firstDay.getYear() + j);
                 }
             }
         } else if (data.getYear() < firstDay.getYear()) {
             totalYears = firstDay.getYear() - data.getYear();
-            for (int i = 0; i < totalYears; i++) {
+            for (int i = 1; i < totalYears; i++) {
                 this.nDays += leapYear(firstDay.getYear() - i) ? 366 : 365;
 
-                for (int j = 0; j < data.getMonth(); j++) {
+                for (int j = 1; j < data.getMonth(); j++) {
                     this.nDays += monthDays(firstDay.getMonth() + j, firstDay.getYear() + j);
                 }
             }
         } else if (data.getYear() == firstDay.getYear()) {
-            for (int j = 0; j < data.getMonth(); j++) {
+            for (int j = 1; j < data.getMonth(); j++) {
                 this.nDays += monthDays(firstDay.getMonth() + j, firstDay.getYear() + j);
             }
         }
 
-        this.nDays += data.getDay();
+        this.nDays += data.getDay() - 1;
 
         return this.nDays;
 
