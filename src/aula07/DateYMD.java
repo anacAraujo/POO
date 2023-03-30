@@ -63,6 +63,6 @@ public class DateYMD extends Date {
     }
 
     public String toString() {
-        return this.year + "-" + this.month + "-" + this.day;
+        return super.toString(this.day, this.month, this.year);
     }
 }
