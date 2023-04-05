@@ -1,3 +1,5 @@
+package teste;
+
 public class LibraryItem {
     private static int currentID = 0;
 
@@ -11,6 +13,8 @@ public class LibraryItem {
         this.titulo = titulo;
         this.isDisponivel = true;
         this.nomeUser = null;
+
+        currentID++;
     }
 
     public int getId() {
@@ -59,7 +63,8 @@ public class LibraryItem {
 
         LibraryItem outroItem = (LibraryItem) obj;
 
-        if (this.titulo == outroItem.titulo) {
+        if (this.id == outroItem.id &&
+                this.titulo == outroItem.titulo) {
             return true;
         }
         return false;
@@ -67,7 +72,10 @@ public class LibraryItem {
 
     @Override
     public int hashCode() {
-        // TODO Auto-generated method stub
-        return super.hashCode();
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+        return result;
     }
 }
