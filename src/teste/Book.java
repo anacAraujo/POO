@@ -1,3 +1,5 @@
+package teste;
+
 public class Book extends LibraryItem {
     private String nomeAutor;
 
