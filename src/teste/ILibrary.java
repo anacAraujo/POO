@@ -1,3 +1,5 @@
+package teste;
+
 public interface ILibrary {
     public void addItem(LibraryItem item);
 
@@ -5,7 +7,7 @@ public interface ILibrary {
 
     public LibraryItem searchForItem(String title);
 
-    public boolean borrowItem(int itemId);
+    public boolean borrowItem(int itemId, String userName);
 
     public boolean returnItem(int itemId);
 
