@@ -1,4 +1,8 @@
+package teste;
+
 import java.util.Scanner;
+
+import javax.xml.namespace.QName;
 
 public class LibraryMain {
     public static void main(String[] args) {
@@ -22,9 +26,27 @@ public class LibraryMain {
             switch (choice) {
                 case "1":
                     // adicionar item
+                    System.out.println("Adicionar:\n1 - Livro\n2 - DVD");
+                    int tipoItem = scanner.nextInt();
                     System.out.print("Titulo: ");
                     String titulo = scanner.next();
-                    library.addItem(new LibraryItem(titulo));
+
+                    switch (tipoItem) {
+                        case 1:
+                            System.out.print("Autor: ");
+                            String autor = scanner.next();
+                            library.addItem(new Book(titulo, autor));
+                            break;
+                        case 2:
+                            System.out.print("Duração: ");
+                            int duracao = scanner.nextInt();
+                            library.addItem(new Dvd(titulo, duracao));
+                            break;
+                        default:
+                            System.out.println("Opção inválida.");
+                            break;
+                    }
+
                     break;
                 case "2":
                     // remover item
@@ -50,13 +72,15 @@ public class LibraryMain {
                     break;
                 case "4":
                     // emprestar um item, através do ID
+                    System.out.print("O seu nome:");
+                    String userName = scanner.next();
                     System.out.print("Id do item que quer emprestar: ");
                     int idEmprestar = scanner.nextInt();
                     if (idEmprestar == -1) {
                         System.out.println("não existe.");
                         return;
                     }
-                    library.returnItem(idEmprestar);
+                    library.borrowItem(idEmprestar, userName);
                     break;
                 case "5":
                     // devolver um item, através do ID
