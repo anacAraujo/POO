@@ -1,13 +1,13 @@
+package teste;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Library implements ILibrary {
-    private int currentItem;
     private List<LibraryItem> itens;
 
     public Library() {
         this.itens = new ArrayList<LibraryItem>();
-        currentItem = 0;
     }
 
     public void addItem(LibraryItem item) {
@@ -27,17 +27,28 @@ public class Library implements ILibrary {
         return null;
     }
 
-    public boolean borrowItem(int itemId) {
-        if (this.itens.get(itemId).getisDisponivel()) {
-            this.itens.get(itemId).checkout(this.itens.get(itemId).getNomeUser());
+    public LibraryItem searchById(int itemId) {
+        for (LibraryItem libraryItem : itens) {
+            if (libraryItem.getId() == itemId) {
+                return libraryItem;
+            }
+        }
+        return null;
+    }
+
+    public boolean borrowItem(int itemId, String userName) {
+        LibraryItem item = searchById(itemId);
+        if (item.getisDisponivel()) {
+            item.checkout(userName);
             return true;
         }
         return false;
     }
 
     public boolean returnItem(int itemId) {
-        if (!this.itens.get(itemId).getisDisponivel()) {
-            this.itens.get(itemId).returnLibraryItem();
+        LibraryItem item = searchById(itemId);
+        if (!item.getisDisponivel()) {
+            item.returnLibraryItem();
             return true;
         }
         return false;
