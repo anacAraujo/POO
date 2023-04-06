@@ -20,14 +20,14 @@ public class Library implements ILibrary {
 
     public LibraryItem searchForItem(String title) {
         for (LibraryItem libraryItem : itens) {
-            if (libraryItem.getTitulo() == title) {
+            if (libraryItem.getTitulo().equals(title)) {
                 return libraryItem;
             }
         }
         return null;
     }
 
-    public LibraryItem searchById(int itemId) {
+    private LibraryItem searchById(int itemId) {
         for (LibraryItem libraryItem : itens) {
             if (libraryItem.getId() == itemId) {
                 return libraryItem;
@@ -38,6 +38,9 @@ public class Library implements ILibrary {
 
     public boolean borrowItem(int itemId, String userName) {
         LibraryItem item = searchById(itemId);
+        if (item == null) {
+            return false;
+        }
         if (item.getisDisponivel()) {
             item.checkout(userName);
             return true;
@@ -47,6 +50,9 @@ public class Library implements ILibrary {
 
     public boolean returnItem(int itemId) {
         LibraryItem item = searchById(itemId);
+        if (item == null) {
+            return false;
+        }
         if (!item.getisDisponivel()) {
             item.returnLibraryItem();
             return true;
@@ -56,7 +62,8 @@ public class Library implements ILibrary {
 
     public void printInventory() {
         for (LibraryItem libraryItem : itens) {
-            libraryItem.toString();
+            System.out.println(libraryItem.toString());
         }
+        System.out.println("------------------");
     }
 }
