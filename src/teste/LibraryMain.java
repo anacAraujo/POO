@@ -2,12 +2,19 @@ package teste;
 
 import java.util.Scanner;
 
-import javax.xml.namespace.QName;
-
 public class LibraryMain {
+
+    private static Scanner scanner = new Scanner(System.in);
+
+    private static LibraryItem searchByTitle(ILibrary library) {
+        System.out.print("Insira o titulo: ");
+        String titulo = scanner.nextLine();
+        LibraryItem item = library.searchForItem(titulo);
+        return item;
+    }
+
     public static void main(String[] args) {
         ILibrary library = new Library();
-        Scanner scanner = new Scanner(System.in);
         String choice = "";
 
         while (!choice.equals("7")) {
@@ -28,65 +35,74 @@ public class LibraryMain {
                     // adicionar item
                     System.out.println("Adicionar:\n1 - Livro\n2 - DVD");
                     int tipoItem = scanner.nextInt();
+                    scanner.nextLine();
+
                     System.out.print("Titulo: ");
-                    String titulo = scanner.next();
+                    String titulo = scanner.nextLine();
 
                     switch (tipoItem) {
                         case 1:
                             System.out.print("Autor: ");
-                            String autor = scanner.next();
+                            String autor = scanner.nextLine();
                             library.addItem(new Book(titulo, autor));
                             break;
                         case 2:
                             System.out.print("Duração: ");
                             int duracao = scanner.nextInt();
+                            scanner.nextLine();
+
                             library.addItem(new Dvd(titulo, duracao));
                             break;
                         default:
                             System.out.println("Opção inválida.");
                             break;
                     }
-
                     break;
                 case "2":
                     // remover item
-                    System.out.print("Titulo que quer eliminar: ");
-                    String tituloEliminar = scanner.next();
-                    LibraryItem eliminar = library.searchForItem(tituloEliminar);
-                    if (eliminar == null) {
-                        System.out.println("não existe.");
-                        return;
+                    LibraryItem itemRemove = searchByTitle(library);
+                    if (itemRemove == null) {
+                        System.out.println("Titulo não existe.");
+                        break;
                     }
-                    library.removeItem(eliminar);
+                    library.removeItem(itemRemove);
                     break;
                 case "3":
                     // procurar um item e imprimir as suas informações
-                    System.out.print("Titulo que quer procurar: ");
-                    String tituloProcurar = scanner.next();
-                    LibraryItem procurar = library.searchForItem(tituloProcurar);
-                    if (procurar == null) {
-                        System.out.println("não existe.");
-                        return;
+                    LibraryItem itemSearch = searchByTitle(library);
+                    if (itemSearch == null) {
+                        System.out.println("Titulo não existe.");
+                        break;
                     }
-                    System.out.println(procurar.toString());
+                    System.out.println(itemSearch.toString());
                     break;
                 case "4":
                     // emprestar um item, através do ID
                     System.out.print("O seu nome:");
-                    String userName = scanner.next();
+                    String userName = scanner.nextLine();
                     System.out.print("Id do item que quer emprestar: ");
                     int idEmprestar = scanner.nextInt();
-                    if (idEmprestar == -1) {
-                        System.out.println("não existe.");
-                        return;
+                    scanner.nextLine();
+
+                    boolean borrowed = library.borrowItem(idEmprestar, userName);
+                    if (borrowed) {
+                        System.out.println("Item emprestado com sucesso.");
+                    } else {
+                        System.out.println("Falha ao emprestar o item.");
                     }
-                    library.borrowItem(idEmprestar, userName);
                     break;
                 case "5":
                     // devolver um item, através do ID
                     System.out.print("Id do item que quer devolver: ");
                     int idDevolver = scanner.nextInt();
-                    library.returnItem(idDevolver);
+                    scanner.nextLine();
+
+                    boolean returned = library.returnItem(idDevolver);
+                    if (returned) {
+                        System.out.println("Item devolvido com sucesso.");
+                    } else {
+                        System.out.println("Falha ao devolver o item.");
+                    }
                     break;
                 case "6":
                     // imprimir o inventório da libraria
@@ -97,7 +113,7 @@ public class LibraryMain {
                     break;
                 default:
                     // imprimir mensagem de erro
-                    System.out.println("Erro.");
+                    System.out.println("Erro opcao invalida.");
                     break;
             }
         }
