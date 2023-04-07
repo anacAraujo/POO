@@ -1,6 +1,6 @@
 package teste;
 
-public class LibraryItem {
+public abstract class LibraryItem {
     private static int currentID = 0;
 
     private int id;
@@ -17,6 +17,15 @@ public class LibraryItem {
         currentID++;
     }
 
+    public void checkout(String nomeUser) {
+        this.nomeUser = nomeUser;
+        this.isDisponivel = false;
+    }
+
+    public void returnLibraryItem() {
+        this.isDisponivel = true;
+    }
+
     public int getId() {
         return this.id;
     }
@@ -31,28 +40,6 @@ public class LibraryItem {
 
     public String getNomeUser() {
         return this.nomeUser;
-    }
-
-    public void checkout(String nomeUser) {
-        this.nomeUser = nomeUser;
-        this.isDisponivel = false;
-    }
-
-    public void returnLibraryItem() {
-        this.isDisponivel = true;
-    }
-
-    @Override
-    public String toString() {
-        String diponivel = "";
-        if (isDisponivel) {
-            diponivel = "sim";
-        } else {
-            diponivel = "não; Utilizador: " + this.nomeUser;
-        }
-        return String.format("ID item: %d: Titulo: %s, Disponivel: " + diponivel + "",
-                this.id,
-                this.titulo);
     }
 
     @Override
@@ -77,5 +64,19 @@ public class LibraryItem {
         result = prime * result + id;
         result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
         return result;
+    }
+
+    @Override
+    public String toString() {
+        String disponivel = "";
+        if (isDisponivel) {
+            disponivel = "sim";
+        } else {
+            disponivel = "não; Utilizador: " + this.nomeUser;
+        }
+        return String.format("ID item: %d, Titulo: %s, Disponivel: %s",
+                this.id,
+                this.titulo,
+                disponivel);
     }
 }
