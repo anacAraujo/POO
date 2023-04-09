@@ -1,32 +1,50 @@
-package aula08;
+package aula08.Ex01;
 
-public abstract class Automovel {
+public abstract class Automovel implements KmPercorridosInterface {
+
     private String matricula;
     private String marca;
     private String modelo;
     private double potencia;
+    private int kmAtuais;
+    private int kmTotal;
 
     public Automovel(String matricula, String marca, String modelo, double potencia) {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
         this.potencia = potencia;
+        this.kmAtuais = 0;
+        this.kmTotal = 0;
     }
 
-    public void validMaricula() {
+    // public void validMaricula() {
 
+    // }
+
+    // public void validMarca() {
+
+    // }
+
+    // public void validModelo() {
+
+    // }
+
+    // public void validPotencia() {
+
+    // }
+
+    public void trajeto(int quilometros) {
+        this.kmAtuais = quilometros;
+        this.kmTotal += quilometros;
     }
 
-    public void validMarca() {
-
+    public int ultimoTrajeto() {
+        return this.kmAtuais;
     }
 
-    public void validModelo() {
-
-    }
-
-    public void validPotencia() {
-
+    public int distanciaTotal() {
+        return this.kmTotal;
     }
 
     @Override

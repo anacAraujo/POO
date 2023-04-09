@@ -1,4 +1,4 @@
-package aula08;
+package aula08.Ex01;
 
 public class PesadoMercadoria extends Pesado {
     private double cargaMax;

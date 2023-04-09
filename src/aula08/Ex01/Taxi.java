@@ -1,4 +1,4 @@
-package aula08;
+package aula08.Ex01;
 
 public class Taxi extends Ligeiro {
     private int licenca;

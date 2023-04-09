@@ -1,4 +1,4 @@
-package aula08;
+package aula08.Ex01;
 
 import java.util.Arrays;
 import java.util.List;
