@@ -3,7 +3,8 @@ package aula08.Ex01;
 public class PesadoMercadoria extends Pesado {
     private double cargaMax;
 
-    public PesadoMercadoria(String matricula, String marca, String modelo, double potencia, int numQuadro, double peso,
+    public PesadoMercadoria(String matricula, String marca, String modelo, double potencia, String numQuadro,
+            double peso,
             double cargaMax) {
         super(matricula, marca, modelo, potencia, numQuadro, peso);
         this.cargaMax = cargaMax;
