@@ -56,7 +56,7 @@ public abstract class Automovel {
 
     @Override
     public String toString() {
-        return String.format("Matricula: %s; Marca: %s; Modelo: %s; Potencia: %d",
+        return String.format("Matricula: %s; Marca: %s; Modelo: %s; Potencia: %f",
                 this.matricula,
                 this.marca,
                 this.modelo,
