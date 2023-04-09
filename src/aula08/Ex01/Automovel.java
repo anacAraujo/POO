@@ -35,6 +35,10 @@ public abstract class Automovel implements KmPercorridosInterface {
     // }
 
     public void trajeto(int quilometros) {
+        if (quilometros <= 0) {
+            System.out.println("Número inválido: " + quilometros + "km.");
+            return;
+        }
         this.kmAtuais = quilometros;
         this.kmTotal += quilometros;
     }
