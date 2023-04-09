@@ -1,10 +1,10 @@
 package aula08.Ex01;
 
 public class Ligeiro extends Automovel {
-    private int numQuadro;
+    private String numQuadro;
     private double capacidadeBagageira;
 
-    public Ligeiro(String matricula, String marca, String modelo, double potencia, int numQuadro,
+    public Ligeiro(String matricula, String marca, String modelo, double potencia, String numQuadro,
             double capacidadeBagageira) {
         super(matricula, marca, modelo, potencia);
         this.numQuadro = numQuadro;
@@ -23,7 +23,7 @@ public class Ligeiro extends Automovel {
 
     @Override
     public String toString() {
-        return String.format("%s; Nº Quadro: %d; Capacidade Bagageira: %f",
+        return String.format("%s; Nº Quadro: %s; Capacidade Bagageira: %f",
                 super.toString(),
                 this.numQuadro,
                 this.capacidadeBagageira);
