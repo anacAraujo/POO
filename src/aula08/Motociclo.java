@@ -1,7 +1,10 @@
 package aula08;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Motociclo extends Automovel {
-    private static String[] tipos = { "desportivo", "estrada" };
+    private static List<String> tipos = Arrays.asList("desportivo", "estrada");
 
     private String tipo;
 
@@ -10,8 +13,8 @@ public class Motociclo extends Automovel {
         this.tipo = tipo;
     }
 
-    public boolean validTipo(String tipo) {
-        if (tipo != "desportivo" || tipo != "estrada") {
+    public static boolean validTipo(String tipo) {
+        if (tipos.indexOf(tipo) == -1) {
             return false;
         }
         return true;
