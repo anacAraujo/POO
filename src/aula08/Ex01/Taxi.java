@@ -3,7 +3,8 @@ package aula08.Ex01;
 public class Taxi extends Ligeiro {
     private int licenca;
 
-    public Taxi(String matricula, String marca, String modelo, double potencia, int numQuadro, int capacidadeBagageira,
+    public Taxi(String matricula, String marca, String modelo, double potencia, String numQuadro,
+            int capacidadeBagageira,
             int licenca) {
         super(matricula, marca, modelo, potencia, numQuadro, capacidadeBagageira);
         this.licenca = licenca;
