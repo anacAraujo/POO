@@ -16,8 +16,20 @@ public class EmpresaAluguer {
         this.automoveis = new ArrayList<Automovel>();
     }
 
-    public void adicionarAutomovel(Automovel automovel) {
-        automoveis.add(automovel);
+    public void adicionarAutomovel(Automovel automovelNovo) {
+        if (automovelNovo.getMatricula() == null) {
+            System.out.println("Veiculo inválido.");
+            return;
+        }
+        if (automoveis.size() > 0) {
+            for (Automovel automovel : automoveis) {
+                if (!automovelNovo.validAutomovel(automovel.getMatricula())) {
+                    System.out.println("Veiculo existente.");
+                    return;
+                }
+            }
+        }
+        automoveis.add(automovelNovo);
     }
 
     @Override
