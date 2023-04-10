@@ -11,11 +11,18 @@ public class PesadoPassageiroEletrico extends PesadoPassageiro implements Veicul
 
     @Override
     public void trajeto(int quilometros) {
-        super.trajeto(quilometros);
-        if (quilometros >= 1000) {
+
+        if (quilometros >= 1000 && this.bateria >= 80) {
             this.bateria -= 80;
-        } else {
+        } else if (quilometros < 1000 && this.bateria >= 60) {
             this.bateria -= 60;
+        } else {
+            System.out.println("Carregue primeiro o automovel - Sem bateria.");
+            return;
+        }
+        super.trajeto(quilometros);
+        if (this.bateria < 0) {
+            this.bateria = 0;
         }
     }
 
@@ -29,5 +36,12 @@ public class PesadoPassageiroEletrico extends PesadoPassageiro implements Veicul
             return;
         }
         this.bateria = percentagem;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s; Bateria: %d",
+                super.toString(),
+                this.bateria);
     }
 }
