@@ -11,11 +11,17 @@ public class LigeiroEletrico extends Ligeiro implements VeiculoEletrico {
 
     @Override
     public void trajeto(int quilometros) {
-        super.trajeto(quilometros);
-        if (quilometros >= 1000) {
+        if (quilometros >= 1000 && this.bateria >= 70) {
             this.bateria -= 70;
-        } else {
+        } else if (quilometros < 1000 && this.bateria >= 45) {
             this.bateria -= 45;
+        } else {
+            System.out.println("Carregue primeiro o automovel - Sem bateria.");
+            return;
+        }
+        super.trajeto(quilometros);
+        if (this.bateria < 0) {
+            this.bateria = 0;
         }
     }
 
@@ -29,5 +35,12 @@ public class LigeiroEletrico extends Ligeiro implements VeiculoEletrico {
             return;
         }
         this.bateria = percentagem;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s; Bateria: %d",
+                super.toString(),
+                this.bateria);
     }
 }
