@@ -12,7 +12,7 @@ public class PesadoPassageiro extends Pesado {
 
     @Override
     public String toString() {
-        return String.format("%; Nº Máximo Passageiros: %d",
+        return String.format("%s, Nº Máximo Passageiros: %d",
                 super.toString(),
                 this.numMaxPassageiros);
     }
