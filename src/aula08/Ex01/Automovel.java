@@ -18,9 +18,16 @@ public abstract class Automovel implements KmPercorridosInterface {
         this.kmTotal = 0;
     }
 
-    // public void validMaricula() {
+    public String getMatricula() {
+        return this.matricula;
+    }
 
-    // }
+    public boolean validAutomovel(String matricula) {
+        if (this.matricula.equals(matricula) || marca == null || modelo == null || potencia <= 0) {
+            return false;
+        }
+        return true;
+    }
 
     // public void validMarca() {
 
@@ -84,5 +91,4 @@ public abstract class Automovel implements KmPercorridosInterface {
                 this.modelo,
                 this.potencia);
     }
-
 }
