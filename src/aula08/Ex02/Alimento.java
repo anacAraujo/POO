@@ -1,10 +1,11 @@
 package aula08.Ex02;
 
 public abstract class Alimento {
+    public static boolean isVegetariano;
+
     private double qntProteina;
     private double qntCaloria;
     private double peso;
-    private boolean isVegetariano;
 
     public Alimento(double qntProteina, double qntCaloria, double peso) {
         this.qntProteina = qntProteina;
@@ -12,8 +13,16 @@ public abstract class Alimento {
         this.peso = peso;
     }
 
-    public void setIsVegetariano(boolean isVegetariano) {
-        this.isVegetariano = isVegetariano;
+    public double getQntProteina() {
+        return qntProteina;
+    }
+
+    public double getQntCaloria() {
+        return qntCaloria;
+    }
+
+    public double getPeso() {
+        return peso;
     }
 
     @Override
