@@ -6,10 +6,14 @@ public abstract class Alimento {
     private double peso;
     private boolean isVegetariano;
 
-    private Alimento(double qntProteina, double qntCaloria, double peso) {
+    public Alimento(double qntProteina, double qntCaloria, double peso) {
         this.qntProteina = qntProteina;
         this.qntCaloria = qntCaloria;
         this.peso = peso;
+    }
+
+    public void setIsVegetariano(boolean isVegetariano) {
+        this.isVegetariano = isVegetariano;
     }
 
     @Override
