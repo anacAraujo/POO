@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Ementa {
-    public Map<int,String>DiaSemana=
-    { "Segunda", "Terça", "Quarta", "Quinta", "Sexta" };
+    public enum DiaSemana {
+        domingo, segunda, terca, quarta, quinta, sexta, sabado
+    }
 
     private String nome;
     private String local;
