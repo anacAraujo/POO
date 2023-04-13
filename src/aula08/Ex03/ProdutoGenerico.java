@@ -30,4 +30,12 @@ public class ProdutoGenerico implements Produto {
     public void removerQuantidade(int quantidade) {
         this.qntStock -= quantidade;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s; Disponiveis: %d; Preco: %f;",
+                this.nome,
+                this.qntStock,
+                this.preco);
+    }
 }
