@@ -5,5 +5,7 @@ public interface Compra {
 
     void listarProdutos();
 
-    void calcularTotal();
+    // void -----> double: é chamado no programa main disponibilizado à espera que
+    // seja retornado um valor.
+    double calcularTotal();
 }
