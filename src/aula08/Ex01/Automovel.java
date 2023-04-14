@@ -29,18 +29,6 @@ public abstract class Automovel implements KmPercorridosInterface {
         return true;
     }
 
-    // public void validMarca() {
-
-    // }
-
-    // public void validModelo() {
-
-    // }
-
-    // public void validPotencia() {
-
-    // }
-
     public void trajeto(int quilometros) {
         if (quilometros <= 0) {
             System.out.println("Número inválido: " + quilometros + "km.");
