@@ -36,7 +36,7 @@ public class Cereal extends Alimento {
 
     @Override
     public String toString() {
-        return String.format("Legume %s; %s",
+        return String.format("Cereal %s; %s",
                 this.nome,
                 super.toString());
     }
