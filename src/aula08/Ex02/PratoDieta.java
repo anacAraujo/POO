@@ -12,11 +12,19 @@ public class PratoDieta extends Prato {
 
     @Override
     public boolean addIngrediente(Alimento alimento) {
-        totalCalorias += alimento.getQntCaloria();
-        if (totalCalorias > caloriasMax) {
+        if (alimento.totalCaloriasAlimento() + totalCalorias > caloriasMax) {
             return false;
         }
+        totalCalorias += alimento.totalCaloriasAlimento();
         super.addIngrediente(alimento);
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s - Dieta (%.1f de %.1f Calorias)",
+                super.toString(),
+                this.totalCalorias,
+                this.caloriasMax);
     }
 }
