@@ -17,11 +17,18 @@ public class CarrinhoDeCompras implements Compra {
     }
 
     public void listarProdutos() {
-
+        String result = "";
+        for (Map.Entry<Produto, Integer> produto : produtos.entrySet()) {
+            result += produto.toString() + "Quantidade: " + produto.getValue() + "\n";
+        }
+        System.out.println(result);
     }
 
-    public void calcularTotal() {
-
+    public double calcularTotal() {
+        for (Map.Entry<Produto, Integer> produto : produtos.entrySet()) {
+            this.total += produto.getKey().getPreco() * produto.getValue();
+        }
+        return this.total;
     }
 
 }
