@@ -18,28 +18,12 @@ public abstract class Automovel implements KmPercorridosInterface {
         this.kmTotal = 0;
     }
 
-    public String getMatricula() {
-        return this.matricula;
-    }
-
-    public boolean validAutomovel(String matricula) {
-        if (this.matricula.equals(matricula) || marca == null || modelo == null || potencia <= 0) {
+    public boolean validAutomovel() {
+        if (this.matricula == null || marca == null || modelo == null || potencia <= 0) {
             return false;
         }
         return true;
     }
-
-    // public void validMarca() {
-
-    // }
-
-    // public void validModelo() {
-
-    // }
-
-    // public void validPotencia() {
-
-    // }
 
     public void trajeto(int quilometros) {
         if (quilometros <= 0) {
@@ -48,6 +32,10 @@ public abstract class Automovel implements KmPercorridosInterface {
         }
         this.kmAtuais = quilometros;
         this.kmTotal += quilometros;
+    }
+
+    public String getMatricula() {
+        return this.matricula;
     }
 
     public int ultimoTrajeto() {
