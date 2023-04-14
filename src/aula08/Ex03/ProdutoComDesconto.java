@@ -1,8 +1,6 @@
 package aula08.Ex03;
 
 public class ProdutoComDesconto extends ProdutoGenerico {
-    private String nome;
-    private int qntStock;
     private double preco;
     private int desconto;
 
@@ -18,7 +16,7 @@ public class ProdutoComDesconto extends ProdutoGenerico {
 
     @Override
     public String toString() {
-        return String.format("%s; Preco com desconto: %f",
+        return String.format("%s Preco com desconto: %f",
                 super.toString(),
                 precoComDesconto());
     }
