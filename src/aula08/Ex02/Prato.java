@@ -3,16 +3,25 @@ package aula08.Ex02;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Prato {
+public class Prato {
     private String nome;
     private List<Alimento> alimentos;
+    private double caloriasPrato;
+    private double proteinasPrato;
+    private double pesoPrato;
 
     public Prato(String nome) {
         this.nome = nome;
+        this.caloriasPrato = 0;
+        this.proteinasPrato = 0;
+        this.pesoPrato = 0;
         alimentos = new ArrayList<Alimento>();
     }
 
     public boolean addIngrediente(Alimento alimento) {
+        this.caloriasPrato += alimento.totalCaloriasAlimento();
+        this.proteinasPrato += alimento.totalProteinasAlimento();
+        this.pesoPrato += alimento.getPeso();
         alimentos.add(alimento);
         return true;
     }
@@ -22,7 +31,13 @@ public abstract class Prato {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-        result = prime * result + ((alimentos == null) ? 0 : alimentos.hashCode());
+        long temp;
+        temp = Double.doubleToLongBits(caloriasPrato);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(proteinasPrato);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(pesoPrato);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
@@ -40,25 +55,23 @@ public abstract class Prato {
                 return false;
         } else if (!nome.equals(other.nome))
             return false;
-        if (alimentos == null) {
-            if (other.alimentos != null)
-                return false;
-        } else if (!alimentos.equals(other.alimentos))
+        if (Double.doubleToLongBits(caloriasPrato) != Double.doubleToLongBits(other.caloriasPrato))
+            return false;
+        if (Double.doubleToLongBits(proteinasPrato) != Double.doubleToLongBits(other.proteinasPrato))
+            return false;
+        if (Double.doubleToLongBits(pesoPrato) != Double.doubleToLongBits(other.pesoPrato))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        String comp = "";
-        for (Alimento alimento : alimentos) {
-            comp += alimento.toString();
-        }
-
-        return String.format("A Sair... Prato %s composto por: %d \n",
+        return String.format(
+                "Prato %s composto por: %d ingredientes - total de calorias %.1f, proteinas %.1f, peso %.1f",
                 this.nome,
                 alimentos.size(),
-                comp);
+                this.caloriasPrato,
+                this.proteinasPrato,
+                this.pesoPrato);
     }
-
 }
