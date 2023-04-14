@@ -13,4 +13,10 @@ public class PratoVegetariano extends Prato {
         super.addIngrediente(alimento);
         return true;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s - Prato Vegetariano",
+                super.toString());
+    }
 }
