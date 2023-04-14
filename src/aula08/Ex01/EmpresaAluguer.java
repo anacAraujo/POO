@@ -21,13 +21,9 @@ public class EmpresaAluguer {
             System.out.println("Veiculo inválido.");
             return;
         }
-        if (automoveis.size() > 0) {
-            for (Automovel automovel : automoveis) {
-                if (!automovelNovo.validAutomovel(automovel.getMatricula())) {
-                    System.out.println("Veiculo existente.");
-                    return;
-                }
-            }
+        if (automoveis.contains(automovelNovo)) {
+            System.out.println("Veiculo existente.");
+            return;
         }
         automoveis.add(automovelNovo);
     }
