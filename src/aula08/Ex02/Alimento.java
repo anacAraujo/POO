@@ -6,6 +6,8 @@ public abstract class Alimento {
     private double qntProteina;
     private double qntCaloria;
     private double peso;
+    private double totalCaloriasAlimento;
+    private double totalProteinasAlimento;
 
     public Alimento(double qntProteina, double qntCaloria, double peso) {
         this.qntProteina = qntProteina;
@@ -23,6 +25,14 @@ public abstract class Alimento {
 
     public double getPeso() {
         return peso;
+    }
+
+    public double totalCaloriasAlimento() {
+        return (this.peso * this.qntCaloria) / 100;
+    }
+
+    public double totalProteinasAlimento() {
+        return (this.peso * this.qntProteina) / 100;
     }
 
     @Override
@@ -66,7 +76,7 @@ public abstract class Alimento {
         if (isVegetariano) {
             vegi = "Vegetariano;";
         }
-        return String.format("Proteinas: %f; Calorias: %f; Peso: %f; %s",
+        return String.format("Proteinas: %.1f; Calorias: %.1f; Peso: %.1f; %s",
                 this.qntProteina,
                 this.qntCaloria,
                 this.peso,
