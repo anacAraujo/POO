@@ -3,6 +3,8 @@ package aula09;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
+
 import aula06.*;
 
 public class ALDemo {
@@ -25,7 +27,7 @@ public class ALDemo {
         c2.remove(0);
         System.out.println(c2);
 
-        HashSet<Pessoa> c3 = new HashSet<Pessoa>();
+        Set<Pessoa> c3 = new HashSet<>();
         c3.add(new Pessoa("Tomás", 11111111, new DateYMD(1, 1, 2001)));
         c3.add(new Pessoa("Eva", 00000000, new DateYMD(20, 9, 1997)));
         c3.add(new Pessoa("João", 22222222, new DateYMD(15, 8, 2001)));
