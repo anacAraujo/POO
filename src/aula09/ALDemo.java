@@ -58,6 +58,9 @@ public class ALDemo {
         c4.add(new aula07.DateYMD(3, 3, 1983));
         c4.add(new aula07.DateYMD(3, 3, 2012));
         c4.add(new aula07.DateYMD(3, 3, 1999));
+        c4.add(new aula07.DateYMD(3, 3, 2130));
+        // c4.add(new aula07.DateND(new aula07.DateYMD(3, 3, 2030)));
+        c4.add(new aula07.DateYMD(3, 3, 2030));
         System.out.println(c4);
     }
 }
