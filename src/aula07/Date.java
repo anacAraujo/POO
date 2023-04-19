@@ -1,6 +1,6 @@
 package aula07;
 
-public abstract class Date {
+public abstract class Date implements Comparable<Date> {
     public static boolean validMonth(int month) {
         if (month >= 1 && month <= 12) {
             return true;
@@ -40,5 +40,18 @@ public abstract class Date {
                 day,
                 month,
                 year);
+    }
+
+    abstract int getDay();
+
+    abstract int getMonth();
+
+    abstract int getYear();
+
+    @Override
+    public int compareTo(Date o) {
+        int a = this.getYear() * 365 + this.getMonth() * 31 + this.getDay();
+        int b = o.getYear() * 365 + o.getMonth() * 31 + o.getDay();
+        return a - b;
     }
 }
