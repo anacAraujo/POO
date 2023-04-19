@@ -14,4 +14,16 @@ public abstract class Plane {
         this.maxPassageiros = maxPassageiros;
         this.maxVelocidade = maxVelocidade;
     }
+
+    abstract String getPlaneType();
+
+    @Override
+    public String toString() {
+        return String.format("%s, Fabricante: %s, Ano Producao: %d, Máx. Passageiros: %d, Máx. Velocidade: %d",
+                this.nome,
+                this.fabricante,
+                this.anoProducao,
+                this.maxPassageiros,
+                this.maxVelocidade);
+    }
 }
