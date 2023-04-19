@@ -15,6 +15,18 @@ public class DateND extends Date {
         this.data = new DateYMD(dataUser.getDay(), dataUser.getMonth(), dataUser.getYear());
     }
 
+    public int getDay() {
+        return this.data.getDay();
+    }
+
+    public int getMonth() {
+        return this.data.getMonth();
+    }
+
+    public int getYear() {
+        return this.data.getYear();
+    }
+
     private void countDaysMonth(int year) {
         for (int j = 1; j <= 12; j++) {
             this.nDays += monthDays(j, year);
