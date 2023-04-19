@@ -1,5 +1,11 @@
 package aula09.Ex03;
 
-public class PlaneManager {
+import java.util.ArrayList;
 
+public class PlaneManager {
+    ArrayList<Plane> frota;
+
+    public PlaneManager() {
+        frota = new ArrayList<>();
+    }
 }
