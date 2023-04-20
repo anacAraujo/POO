@@ -70,15 +70,15 @@ public class PlaneTester {
 
                     switch (userchoise) {
                         case 1:
-                            planeManager.getCommercialPlanes().toString();
+                            System.out.println(planeManager.getCommercialPlanes().toString());
                             break;
                         case 2:
-                            planeManager.getMilitaryPlanes().toString();
+                            System.out.println(planeManager.getMilitaryPlanes().toString());
                             break;
                     }
                     break;
                 case 6:
-                    planeManager.getFastestPlane().toString();
+                    System.out.println(planeManager.getFastestPlane().toString());
                     break;
             }
         } while (userchoise != 7);
