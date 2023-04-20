@@ -28,17 +28,17 @@ public class ALDemo {
         c2.add("Frio");
         c2.add("Chuva");
         System.out.println(c2);
+        System.out.println("Indice Chuva: " + c2.indexOf("Chuva"));
         Collections.sort(c2);
-        System.out.println(c2);
+        System.out.println("Sorted: " + c2);
         c2.remove("Frio");
         c2.remove(0);
         System.out.println(c2);
-        // TODO tem de ser true
-        System.out.println("Contem Calor: " + c2.contains("Calor"));
+        System.out.println("Contem Chuva: " + c2.contains("Chuva"));
         System.out.println("Contem Frio: " + c2.contains("Frio"));
+        System.out.println(c2.lastIndexOf("Chuva"));
 
         System.out.println("\nC3");
-        // TODO Teste a inserção de elementos repetidos (que não podem existir num Set).
         Set<Pessoa> c3 = new HashSet<>();
         c3.add(new Pessoa("Tomas", 11111111, new DateYMD(1, 1, 2001)));
         c3.add(new Pessoa("Eva", 55555555, new DateYMD(20, 9, 1997)));
@@ -47,10 +47,11 @@ public class ALDemo {
         c3.add(new Pessoa("Leonardo", 44444444, new DateYMD(7, 10, 2002)));
         c3.add(new Pessoa("Eva", 55555555, new DateYMD(20, 9, 1997)));
         System.out.println(c3);
-        Iterator<Pessoa> value = c3.iterator();
+        Iterator<Pessoa> iterator = c3.iterator();
         System.out.println("Valores iterador: ");
-        while (value.hasNext()) {
-            System.out.println(value.next());
+        while (iterator.hasNext()) {
+            Pessoa pessoa = iterator.next();
+            System.out.println(pessoa.toString() + " " + pessoa.hashCode());
         }
 
         System.out.println("\nC4");
