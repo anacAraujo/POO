@@ -7,11 +7,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeSet;
-import java.util.Vector;
 
 public class CollectionTester {
     public static void main(String[] args) {
