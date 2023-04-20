@@ -12,10 +12,10 @@ public class PlaneManager {
     }
 
     public void addPlane(Plane plane) {
-        if (frota.containsKey(plane.getId())) {
-            System.out.println("Já existe este id.");
-            return;
-        }
+        // if (frota.containsKey(plane.getId())) {
+        // System.out.println("Já existe este id.");
+        // return;
+        // }
         frota.put(plane.getId(), plane);
     }
 
