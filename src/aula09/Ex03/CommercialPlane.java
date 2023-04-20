@@ -3,8 +3,8 @@ package aula09.Ex03;
 public class CommercialPlane extends Plane {
     private int tripulantes;
 
-    public CommercialPlane(String nome, String fab, int ano, int maxPassageiros, int maxVelocidade, int tripulantes) {
-        super(nome, fab, ano, maxPassageiros, maxVelocidade);
+    public CommercialPlane(String id, String fab, int ano, int maxPassageiros, int maxVelocidade, int tripulantes) {
+        super(id, fab, ano, maxPassageiros, maxVelocidade);
         this.tripulantes = tripulantes;
     }
 
