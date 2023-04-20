@@ -6,8 +6,6 @@ public abstract class Alimento {
     private double qntProteina;
     private double qntCaloria;
     private double peso;
-    private double totalCaloriasAlimento;
-    private double totalProteinasAlimento;
 
     public Alimento(double qntProteina, double qntCaloria, double peso) {
         this.qntProteina = qntProteina;
