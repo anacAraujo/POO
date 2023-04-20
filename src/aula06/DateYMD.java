@@ -97,15 +97,31 @@ public class DateYMD {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + day;
+        result = prime * result + month;
+        result = prime * result + year;
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof DateYMD)) {
-            return false;
-        }
-        DateYMD outraData = (DateYMD) obj;
-        if (this.day == outraData.day && this.month == outraData.month && this.year == outraData.year) {
+        if (this == obj)
             return true;
-        }
-        return false;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        DateYMD other = (DateYMD) obj;
+        if (day != other.day)
+            return false;
+        if (month != other.month)
+            return false;
+        if (year != other.year)
+            return false;
+        return true;
     }
 
     @Override
