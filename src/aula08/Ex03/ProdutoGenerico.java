@@ -3,7 +3,7 @@ package aula08.Ex03;
 public class ProdutoGenerico implements Produto {
     private String nome;
     private int qntStock;
-    private double preco;
+    protected double preco;
 
     public ProdutoGenerico(String nome, int qntStock, double preco) {
         this.nome = nome;
