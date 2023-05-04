@@ -16,11 +16,11 @@ public class DemoEx4 {
             String word = input.next();
             System.out.println(word);
 
-            if (word.length() > 2) {
+            if (word.length() > 2 && word.matches("[a-zA-Z]+")) {
                 wordsMoreThenTwo.add(word);
             }
 
-            if (word.endsWith("s")) {
+            if (word.endsWith("s") && word.matches("[a-zA-Z]+")) {
                 wordsEndS.add(word);
             }
         }
