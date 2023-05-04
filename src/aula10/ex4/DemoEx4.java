@@ -9,19 +9,29 @@ public class DemoEx4 {
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(new FileReader("words.txt"));
 
-        ArrayList<String> words = new ArrayList<>();
+        ArrayList<String> wordsMoreThenTwo = new ArrayList<>();
+        ArrayList<String> wordsEndS = new ArrayList<>();
 
         while (input.hasNext()) {
             String word = input.next();
             System.out.println(word);
 
             if (word.length() > 2) {
-                words.add(word);
+                wordsMoreThenTwo.add(word);
+            }
+
+            if (word.endsWith("s")) {
+                wordsEndS.add(word);
             }
         }
 
         System.out.println("\nPalavras com mais de 2 caracteres:");
-        for (String word : words) {
+        for (String word : wordsMoreThenTwo) {
+            System.out.println(word);
+        }
+
+        System.out.println("\nPalavras que acabam em 's':");
+        for (String word : wordsEndS) {
             System.out.println(word);
         }
     }
