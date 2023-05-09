@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 public class DemoEx4 {
     public static void main(String[] args) throws IOException {
-        Scanner input = new Scanner(new FileReader("words.txt"));
+        Scanner input = new Scanner(new FileReader("src/aula10/ex4/words.txt"));
 
         ArrayList<String> wordsMoreThenTwo = new ArrayList<>();
 
