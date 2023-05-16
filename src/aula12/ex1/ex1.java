@@ -9,7 +9,7 @@ import java.util.Set;
 public class ex1 {
     public static void main(String[] args) {
 
-        String arquivo = "src/aula12/ex1/words.txt";
+        String arquivo = "src/aula12/words.txt";
         try {
             Set<String> palavras = new HashSet<>();
             int totalPalavras = 0;
