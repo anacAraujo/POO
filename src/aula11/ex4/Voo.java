@@ -1,14 +1,32 @@
 package aula11.ex4;
 
+import java.util.List;
+
 public class Voo {
 
-    private String hora, nome, origem, atraso;
+    private String hora, nome, origem, atraso, previsao;
 
     public Voo(String hora, String nome, String origem, String atraso) {
         this.hora = hora;
         this.nome = nome;
         this.origem = origem;
         this.atraso = atraso;
+        this.previsao = "";
+
+        if (this.atraso != "") {
+            int minutosAtraso = Integer.parseInt(atraso);
+            int minutosHora = Integer.parseInt(hora.substring(3));
+
+            int totalMinutos = minutosHora + minutosAtraso;
+
+            int novaHora = Integer.parseInt(hora.substring(0, 2));
+            int novaMinutos = totalMinutos % 60;
+            novaHora += totalMinutos / 60;
+            novaHora = novaHora % 24;
+
+            String horaPrevista = String.format("%02d:%02d", novaHora, novaMinutos);
+            this.previsao = horaPrevista;
+        }
     }
 
     public String getHora() {
@@ -25,6 +43,22 @@ public class Voo {
 
     public String getAtraso() {
         return atraso;
+    }
+
+    public String getPrevisao() {
+        return previsao;
+    }
+
+    public String getSiglaCompanhia() {
+        return this.nome.length() < 2 ? this.nome : this.nome.substring(0, 2);
+    }
+
+    public static double calcularAtrasoMedio(List<Integer> atrasos) {
+        int totalAtrasos = 0;
+        for (int atraso : atrasos) {
+            totalAtrasos += atraso;
+        }
+        return (double) totalAtrasos / atrasos.size();
     }
 
     @Override
