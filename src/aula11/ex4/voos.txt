@@ -1,51 +1,51 @@
 Hora	Voo	Origem	Atraso
-00:50	TP 1944	Lisboa	
-07:00	AEA1147	Madrid	
-07:35	IB 8720	Madrid	00:25
-07:35	TO 3408	Paris, Orly	
-07:40	FR 5451	Faro	
-07:55	EZY3771	Paris, Ch. de Gaulle	00:33
-08:05	TP 459	Paris, Orly	00:13
-08:15	FR 1386	Brussels, Charleroi	
-08:20	FR 4171	Frankfurt, Hahn	
-08:30	S4 370	Toronto, Pearson	00:35
-08:45	TP 080	São Paulo, Guarulhos	
-08:50	FR 2094	Lisboa	
-09:00	TP 1718	Madeira	
-09:15	TP 1922	Lisboa	
-09:35	FR 5482	Madrid	
-09:40	TP 1003	Madrid	00:34
-09:50	EZY1989	Manchester	00:28
-10:05	TP 1926	Lisboa	
-10:55	FR 4585	Barcelona	
-11:10	LH 1176	Frankfurt	00:03
-11:25	TP 451	Paris, Orly	00:16
-11:30	EZY1451	Geneva	
-11:35	FR 9134	Paris, Beauvais	00:24
-11:40	TP 1924	Lisboa	
-11:45	IB 8726	Madrid	
-11:50	FR 8343	London, Stansted	00:31
-12:05	SN 3811	Brussels	
-12:15	FR 4702	Milan/Bergamo	
-12:40	EZY1131	Basel	00:48
-12:40	TO 3409	Madeira	00:29
-13:00	TP 1031	Barcelona	
-13:10	VY 8962	Brussels	00:47
-13:30	FR 1671	Lisboa	
-14:00	TO 3410	Paris, Orly	00:29
-14:05	VY 1985	Paris, Orly	00:05
-14:10	TP 331	London, Gatwick	00:23
-14:10	TP 851	Rome, Fiumicino	
-14:20	TK 1449	Istanbul, Ataturk	
-14:25	EZY2097	London, Luton	
-14:35	EZS1133	Basel	00:33
-14:35	TP 1930	Lisboa	00:32
-14:50	FR 7473	Eindhoven	00:10
-14:55	FR 7228	Valencia	
-15:00	TP 939	Geneva	
-15:10	TP 823	Milan, Malpensa	
-15:15	EZY8497	London, Gatwick	
-15:20	FR 2928	Brussels	
+00:50	TP 1944     Lisboa	
+07:00	AEA1147 Madrid	
+07:35	IB 8720 Madrid	00:25
+07:35	TO 3408 Paris, Orly	
+07:40	FR 5451 Faro	
+07:55	EZY3771 Paris, Ch. de Gaulle	00:33
+08:05	TP 459  Paris, Orly	00:13
+08:15	FR 1386 Brussels, Charleroi	
+08:20	FR 4171 Frankfurt, Hahn	
+08:30	S4 370  Toronto, Pearson	00:35
+08:45	TP 080  São Paulo, Guarulhos	
+08:50	FR 2094 Lisboa	
+09:00	TP 1718 Madeira	
+09:15	TP 1922 Lisboa	
+09:35	FR 5482 Madrid	
+09:40	TP 1003 Madrid	00:34
+09:50	EZY1989 Manchester	00:28
+10:05	TP 1926 Lisboa	
+10:55	FR 4585 Barcelona	
+11:10	LH 1176 Frankfurt	00:03
+11:25	TP 451  Paris, Orly	00:16
+11:30	EZY1451 Geneva	
+11:35	FR 9134 Paris, Beauvais	00:24
+11:40	TP 1924 Lisboa	
+11:45	IB 8726 Madrid	
+11:50	FR 8343 London, Stansted	00:31
+12:05	SN 3811 Brussels	
+12:15	FR 4702 Milan/Bergamo	
+12:40	EZY1131 Basel	00:48
+12:40	TO 3409 Madeira	00:29
+13:00	TP 1031 Barcelona	
+13:10	VY 8962 Brussels	00:47
+13:30	FR 1671 Lisboa	
+14:00	TO 3410 Paris, Orly	00:29
+14:05	VY 1985 Paris, Orly	00:05
+14:10	TP 331  London, Gatwick	00:23
+14:10	TP 851  Rome, Fiumicino	
+14:20	TK 1449 Istanbul, Ataturk	
+14:25	EZY2097 London, Luton	
+14:35	EZS1133 Basel	00:33
+14:35	TP 1930 Lisboa	00:32
+14:50	FR 7473 Eindhoven	00:10
+14:55	FR 7228 Valencia	
+15:00	TP 939  Geneva	
+15:10	TP 823  Milan, Malpensa	
+15:15	EZY8497 London, Gatwick	
+15:20	FR 2928 Brussels	
 15:20	LH 1178	Frankfurt	
 15:35	AEA1143	Madrid	
 15:40	TP 603	Brussels	
